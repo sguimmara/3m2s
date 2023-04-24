@@ -17,7 +17,7 @@ import Fill from 'ol/style/Fill';
 import Text from 'ol/style/Text';
 import Stroke from 'ol/style/Stroke';
 
-import iconRenard from './public/icon-renard.png';
+import iconRenard from '/icon-renard.png';
 
 const basemap = new TileLayer({
     source: new Stamen({ layer: 'watercolor' })
@@ -129,7 +129,7 @@ window.search = function (params) {
     clearFeatures();
 
     if (params === "") {
-        source.addFeatures(features);
+        source.addFeatures(features.filter(f => f != null));
         return;
     }
 
@@ -150,7 +150,7 @@ window.search = function (params) {
     }
 
     for (const feature of features) {
-        if (test(feature)) {
+        if (feature && test(feature)) {
             source.addFeature(feature);
         }
     }
@@ -184,6 +184,14 @@ jour(1, 35.553, 139.781, '22/09/2022', 'https://www.instagram.com/p/CjcrM7BLydo'
 jour(2, 35.671, 139.735, '24/09/2022', 'https://www.instagram.com/p/CjfTkwhL4U8/', 'pluie', 'fatigue', 'tokyo', 'salade', 'cuisine');
 jour(3, 35.670, 139.708, '25/09/2022', 'https://www.instagram.com/p/Cjh3Zo7LO1a/', 'tokyo', 'harajuku', 'design', 'fiesta', 'gallery');
 jour(4, 35.729, 139.719, '26/09/2022', 'https://www.instagram.com/p/Cjkf3uErKfK/', 'tokyo', 'kiddy', 'land', 'ikea');
+jour(5, 35.71705539674499, 139.7796110095705, '27/09/2022', 'https://www.instagram.com/p/CjnREdPruzK/', 'ueno', 'musée');
+jour(6, 35.884277719318696, 139.30951372001255, '28/09/2022', 'https://www.instagram.com/p/CjppG3qLCgt/', 'kinchakuda', 'fleur');
+jour(7, 35.68899932070083, 139.84323468007148, '29/09/2022', 'https://www.instagram.com/p/Cjr8XK8LRHK/', 'residence', 'cuisine');
+jour(8, 35.69722016764693, 139.7760437313934, '30/09/2022', 'https://www.instagram.com/p/CjuvQQgLqan/', 'akihabara', 'maison');
+jour(9, 35.319996553734754, 139.56973250280654, '01/10/2022', 'https://www.instagram.com/p/Cjz7eS3Lp3T/', 'kamakura', 'mer');
+jour(10, 35.69103194848087, 139.84332568919314, '02/10/2022', 'https://www.instagram.com/p/Cj2b_plrDzX/', 'shopping', 'supermarché');
+jour(11, 35.668961430331834, 139.70495940282433, '03/10/2022', 'https://www.instagram.com/p/Cj496C3rBKF/', 'école', 'japonais');
+jour(11, 35.68136016772103, 139.80109635123495, '04/10/2022', 'https://www.instagram.com/p/Cj7htmiLpCm/', 'musée', 'japonais');
 
 jour(65, 33.595, 130.403, '26/11/2022', 'https://www.instagram.com/p/CnxUrR4LcyI/', 'fukuoka', 'kyushu', 'sanctuaire', 'dazaifu', 'tenman-gu', 'tenman', 'ramen', 'croquette');
 jour(79, 42.988, 142.400, '10/12/2022', 'https://www.instagram.com/p/CpYEiNhNI--/', 'hokkaido', 'shimukappu', 'neige', 'restaurant', 'curry', 'train');
