@@ -2,41 +2,55 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Trois mois, deux saisons - Carte interactive</title>
     <link rel="stylesheet" href="node_modules/ol/ol.css" />
-    <link
-      rel="stylesheet"
-      href="node_modules/bootstrap/dist/css/bootstrap.min.css"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <style>
       .map {
         width: 100%;
         height: 100%;
       }
+
+      .search {
+        margin-right: 1rem;
+      }
     </style>
   </head>
   <body>
     <div class="position-relative vh-100 vw-100">
-      <div id="map" class="map position-absolute top-0 start-0"></div>
-      <div class="container position-absolute top-0 end-0">
-        <div class="my-2 col col-lg-auto">
-          <input
-          oninput="search(this.value)"
-          type="search"
-          class="rounded-pill form-control"
-          placeholder="Recherche"
-          aria-label="Username"
-          aria-describedby="basic-addon1"
-          />
+
+      <!-- Carte interactive -->
+      <div id="map" class="map position-absolute top-0 end-0"></div>
+
+      <!-- Recherche -->
+      <div class="position-absolute my-2 top-0 end-0 search">
+        <input
+        oninput="search(this.value)"
+        type="search"
+        class="rounded-pill form-control"
+        placeholder="Rechercher..."
+        aria-label="Search"
+        />
+      </div>
+
+      <!-- Carte du jour -->
+      <!-- <div id="card" class="position-absolute p-2 bottom-0 w-100">
+        <div class="card">
+          <div class="card-body">
+            <h5 id="card-title" class="card-title">Jour 1</h5>
+            <h6 id="card-subtitle" class="card-subtitle mb-2 text-body-secondary">20 novembre 2022</h6>
+            <p id="card-text" class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <a id="card-link" href="#" class="btn btn-primary">Voir le post</a>
+          </div>
         </div>
-      </div>
-      <div class="p-2 w-100 position-absolute bottom-0 start-0">
-        <input oninput="setDate(this.value)" type="range" class="form-range" min="0" max="90" step="1" id="customRange3">
-      </div>
+      </div> -->
+
     </div>
 
     <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
     <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
     <script type="module" src="main.js"></script>
   </body>
 </html>

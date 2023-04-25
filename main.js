@@ -13,87 +13,91 @@ import Point from 'ol/geom/Point.js';
 
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
-import Fill from 'ol/style/Fill';
-import Text from 'ol/style/Text';
-import Stroke from 'ol/style/Stroke';
 
-import iconRenard from '/icon-renard.png';
+import iconNormal from '/icon-neutre.png';
+import iconActive from '/icon-selected.png';
 
 const basemap = new TileLayer({
     source: new Stamen({ layer: 'watercolor' })
 });
 
-const featureIconNormal = new Icon({
-    anchor: [0.5, 0.5],
-    height: 48,
-    width: 48,
-    declutterMode: 'declutter',
-    anchorXUnits: 'fraction',
-    anchorYUnits: 'fraction',
-    src: iconRenard,
-});
+const ratio = 160 / 128;
+const width = 32;
+const size = { width, height: width * ratio };
 
-const featureIconHover = new Icon({
-    anchor: [0.5, 0.5],
-    height: 64,
-    width: 64,
-    declutterMode: 'declutter',
-    anchorXUnits: 'fraction',
-    anchorYUnits: 'fraction',
-    src: iconRenard,
-});
+function icon(src, factor = 1) {
+    return new Icon({
+        anchor: [0.5, 1],
+        height: size.height * factor,
+        width: size.width * factor,
+        anchorXUnits: 'fraction',
+        anchorYUnits: 'fraction',
+        src,
+    });
+}
 
-const defaultIcon = new Style({
-    image: featureIconNormal,
-});
+const featureIconNormal = icon(iconNormal);
+const featureIconHover = icon(iconNormal, 1.2);
+const featureIconActive = icon(iconActive, 1.5);
 
-const highlightIcon = f => new Style({
-    image: featureIconHover,
-    text: new Text({
-        font: '16px Monospace',
-        offsetX: 32,
-        textAlign: 'start',
-        text: f.get('name'),
-        fill: new Fill({
-            color: [0, 0, 0, 1],
-        }),
-        stroke: new Stroke({ color: [255, 255, 255, 127], width: 5 }),
+const normal = new VectorLayer({
+    source: new VectorSource(),
+    style: new Style({
+        image: featureIconNormal,
     })
 });
 
-const featureLayer = new VectorLayer({
+const hovered = new VectorLayer({
     source: new VectorSource(),
-})
+    style: new Style({
+        image: featureIconHover
+    }),
+});
 
-const source = featureLayer.getSource();
+const selected = new VectorLayer({
+    source: new VectorSource(),
+    style: new Style({
+        image: featureIconActive
+    }),
+});
 
 const map = new Map({
-    layers: [basemap, featureLayer],
+    layers: [basemap, normal, hovered, selected],
     target: 'map',
     view: new View({
         center: fromLonLat([139.340, 38.822]),
         zoom: 5.5,
-        minZoom: 5.5
+        minZoom: 5.5,
+        enableRotation: false,
     }),
 });
 
-let hovered = [];
-
 map.on('pointermove', (evt) => {
-    for (const f of hovered) {
-        f.setStyle(defaultIcon);
-    }
-    hovered = map.getFeaturesAtPixel(evt.pixel);
-    if (hovered.length > 0) {
-        const f = hovered[0];
-        f.setStyle(highlightIcon(f));
+    hovered.getSource().clear();
+    normal.getSource().clear();
+    normal.getSource().addFeatures(features.filter(ft => ft != null));
+    const picked = map.getFeaturesAtPixel(evt.pixel);
+    if (picked.length > 0) {
+        const f = picked[0];
+        hovered.getSource().addFeature(f);
+        normal.getSource().removeFeature(f);
     }
 });
 
 map.on('click', (evt) => {
+    selected.getSource().clear();
+    normal.getSource().clear();
+    hovered.getSource().clear();
+
+    normal.getSource().addFeatures(features.filter(ft => ft != null));
+
     const clicked = map.getFeaturesAtPixel(evt.pixel);
     if (clicked.length > 0) {
-        window.open(clicked[0].get('url'), 'blank_');
+        const f = clicked[0];
+        selected.getSource().addFeature(f);
+        normal.getSource().removeFeature(f);
+    } else {
+        selected.getSource().clear();
     }
 });
 
@@ -115,25 +119,22 @@ function jour(num, lat, lon, date, url, ...tags) {
         url,
     });
 
-    feature.setStyle(defaultIcon);
-
     features[num] = feature;
-    featureLayer.getSource().addFeature(feature);
-}
-
-function clearFeatures() {
-    source.clear();
+    normal.getSource().addFeature(feature);
 }
 
 window.search = function (params) {
-    clearFeatures();
+    normal.getSource().clear();
 
     if (params === "") {
-        source.addFeatures(features.filter(f => f != null));
+        normal.getSource().addFeatures(features.filter(f => f != null));
         return;
     }
 
-    const keywords = params.split(',').map(w => w.trim());
+    const keywords = params
+        .split(',')
+        .map(w => w.trim())
+        .map(s => s.toLowerCase());
 
     function test(feature) {
         const name = feature.get('name');
@@ -151,7 +152,7 @@ window.search = function (params) {
 
     for (const feature of features) {
         if (feature && test(feature)) {
-            source.addFeature(feature);
+            normal.getSource().addFeature(feature);
         }
     }
 }
@@ -172,7 +173,7 @@ function addDate(num) {
 }
 
 window.setDate = function (txt) {
-    clearFeatures();
+    source.clear();
 
     const date = Number.parseInt(txt);
     addDate(date - 1);
@@ -190,6 +191,7 @@ jour(7, 35.68899932070083, 139.84323468007148, '29/09/2022', 'https://www.instag
 jour(8, 35.69722016764693, 139.7760437313934, '30/09/2022', 'https://www.instagram.com/p/CjuvQQgLqan/', 'akihabara', 'maison');
 jour(9, 35.319996553734754, 139.56973250280654, '01/10/2022', 'https://www.instagram.com/p/Cjz7eS3Lp3T/', 'kamakura', 'mer');
 jour(10, 35.69103194848087, 139.84332568919314, '02/10/2022', 'https://www.instagram.com/p/Cj2b_plrDzX/', 'shopping', 'supermarché');
+// TODO: gérer plusieurs fois le même jour
 jour(11, 35.668961430331834, 139.70495940282433, '03/10/2022', 'https://www.instagram.com/p/Cj496C3rBKF/', 'école', 'japonais');
 jour(11, 35.68136016772103, 139.80109635123495, '04/10/2022', 'https://www.instagram.com/p/Cj7htmiLpCm/', 'musée', 'japonais');
 
