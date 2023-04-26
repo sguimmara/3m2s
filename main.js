@@ -2,7 +2,7 @@ import _ from 'lodash';
 
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
-import {easeIn, easeOut} from 'ol/easing.js';
+import { easeOut } from 'ol/easing.js';
 import { fromLonLat } from 'ol/proj';
 
 import Feature from 'ol/Feature';
@@ -10,6 +10,7 @@ import Feature from 'ol/Feature';
 import TileLayer from 'ol/layer/Tile.js';
 import VectorLayer from 'ol/layer/Vector';
 
+import OSM from 'ol/source/OSM.js';
 import Stamen from 'ol/source/Stamen.js';
 import VectorSource from 'ol/source/Vector';
 
@@ -23,8 +24,20 @@ import { showCard, hideCard } from './card';
 
 import { features } from './db';
 
+let filteredFeatures = [];
+
+const transition = 16;
+
 const basemap = new TileLayer({
-    source: new Stamen({ layer: 'watercolor' })
+    source: new Stamen({ layer: 'watercolor' }),
+    maxZoom: transition,
+});
+
+const osm = new TileLayer({
+    source: new OSM({
+        url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
+    }),
+    minZoom: transition,
 });
 
 const ratio = 160 / 128;
@@ -68,7 +81,7 @@ const selected = new VectorLayer({
 });
 
 const map = new Map({
-    layers: [basemap, normal, hovered, selected],
+    layers: [osm, basemap, normal, hovered, selected],
     target: 'map',
     view: new View({
         center: fromLonLat([139.340, 38.822]),
@@ -80,8 +93,7 @@ const map = new Map({
 
 map.on('pointermove', (evt) => {
     hovered.getSource().clear();
-    normal.getSource().clear();
-    normal.getSource().addFeatures(features.filter(ft => ft != null));
+    resetFeatures();
     const picked = map.getFeaturesAtPixel(evt.pixel);
     if (picked.length > 0) {
         const f = picked[0];
@@ -103,21 +115,23 @@ function select(feature) {
 
     hideCard();
 
-    setTimeout(() => {
-        showCard({
-            title: feature.get('name'),
-            url: feature.get('url'),
-            date: feature.get('date'),
-            tags,
-        });
-    }, delay);
+    showCard({
+        title: feature.get('name'),
+        url: feature.get('url'),
+        date: feature.get('date'),
+        tags,
+    });
 
-    map.getView().animate({
-        center: feature.get('position'),
-        duration: delay,
-        easing: easeOut,
-        zoom: 10
-    })
+    setTimeout(() => {
+        const currentZoom = map.getView().getZoom();
+
+        map.getView().animate({
+            center: feature.get('position'),
+            duration: delay,
+            easing: easeOut,
+            zoom: currentZoom < 10 ? 10 : undefined,
+        });
+    }, 1);
 }
 
 function clearSelection() {
@@ -125,12 +139,16 @@ function clearSelection() {
     hideCard();
 }
 
+function resetFeatures() {
+    normal.getSource().clear();
+    normal.getSource().addFeatures(filteredFeatures);
+}
+
 map.on('click', (evt) => {
     selected.getSource().clear();
-    normal.getSource().clear();
     hovered.getSource().clear();
 
-    normal.getSource().addFeatures(features.filter(ft => ft != null));
+    resetFeatures();
 
     const clicked = map.getFeaturesAtPixel(evt.pixel);
     if (clicked.length > 0) {
@@ -145,7 +163,8 @@ window.search = function (params) {
     normal.getSource().clear();
 
     if (params === "") {
-        normal.getSource().addFeatures(features.filter(f => f != null));
+        filteredFeatures = [...features];
+        resetFeatures();
         return;
     }
 
@@ -153,6 +172,8 @@ window.search = function (params) {
         .split(',')
         .map(w => w.trim())
         .map(s => s.toLowerCase());
+
+    filteredFeatures.length = 0;
 
     function test(feature) {
         const name = feature.get('name').toLowerCase();
@@ -170,9 +191,11 @@ window.search = function (params) {
 
     for (const feature of features) {
         if (feature && test(feature)) {
-            normal.getSource().addFeature(feature);
+            filteredFeatures.push(feature);
         }
     }
+
+    resetFeatures();
 }
 
 function addDate(num) {
@@ -199,6 +222,7 @@ window.setDate = function (txt) {
     addDate(date + 1);
 }
 
+filteredFeatures = [...features];
 for (const f of features) {
     if (f) {
         normal.getSource().addFeature(f);
