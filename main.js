@@ -1,6 +1,11 @@
+import _ from 'lodash';
+
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
+import {easeIn, easeOut} from 'ol/easing.js';
 import { fromLonLat } from 'ol/proj';
+
+import Feature from 'ol/Feature';
 
 import TileLayer from 'ol/layer/Tile.js';
 import VectorLayer from 'ol/layer/Vector';
@@ -13,6 +18,8 @@ import Icon from 'ol/style/Icon';
 
 import iconNormal from '/icon-neutre.png';
 import iconActive from '/icon-selected.png';
+
+import { showCard, hideCard } from './card';
 
 import { features } from './db';
 
@@ -83,6 +90,41 @@ map.on('pointermove', (evt) => {
     }
 });
 
+/**
+ * @param {Feature} feature
+ */
+function select(feature) {
+    selected.getSource().addFeature(feature);
+    normal.getSource().removeFeature(feature);
+
+    const tags = _.take(_.uniq(feature.get('tags')), 10);
+
+    const delay = 1000;
+
+    hideCard();
+
+    setTimeout(() => {
+        showCard({
+            title: feature.get('name'),
+            url: feature.get('url'),
+            date: feature.get('date'),
+            tags,
+        });
+    }, delay);
+
+    map.getView().animate({
+        center: feature.get('position'),
+        duration: delay,
+        easing: easeOut,
+        zoom: 10
+    })
+}
+
+function clearSelection() {
+    selected.getSource().clear();
+    hideCard();
+}
+
 map.on('click', (evt) => {
     selected.getSource().clear();
     normal.getSource().clear();
@@ -93,10 +135,9 @@ map.on('click', (evt) => {
     const clicked = map.getFeaturesAtPixel(evt.pixel);
     if (clicked.length > 0) {
         const f = clicked[0];
-        selected.getSource().addFeature(f);
-        normal.getSource().removeFeature(f);
+        select(f);
     } else {
-        selected.getSource().clear();
+        clearSelection();
     }
 });
 
@@ -114,13 +155,13 @@ window.search = function (params) {
         .map(s => s.toLowerCase());
 
     function test(feature) {
-        const name = feature.get('name');
+        const name = feature.get('name').toLowerCase();
         if (keywords.some(kw => name.includes(kw))) {
             return true;
         }
 
         const tags = feature.get('tags');
-        if (tags.some(t => keywords.some(kw => t.includes(kw)))) {
+        if (tags.some(t => keywords.some(kw => t.toLowerCase().includes(kw)))) {
             return true;
         }
 

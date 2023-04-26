@@ -11,9 +11,11 @@ function parseDate(text) {
 }
 
 function jour(num, lat, lon, date, url, ...tags) {
+    const position = fromLonLat([lon, lat]);
     const feature = new Feature({
-        geometry: new Point(fromLonLat([lon, lat])),
+        geometry: new Point(position),
         name: `jour ${num}`,
+        position,
         tags,
         day: num,
         date: parseDate(date),
