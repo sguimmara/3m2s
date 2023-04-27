@@ -95,10 +95,14 @@ jour(67, 35.689517254770614, 139.84532523804174, '28/11/2022', 'https://www.inst
 jour(68, 35.69448131400892, 139.77082837716927, '29/11/2022', 'https://www.instagram.com/p/CoIUnhcrmzy/', 'anecdote', 'amis');
 jour(69, 35.68844512625614, 139.84275126550762, '30/11/2022', 'https://www.instagram.com/p/CoKq0LbNW3X/', 'anecdote', 'nourriture', 'résidence');
 jour(70, 35.654120722744594, 139.70289864912178, '01/12/2022', 'https://www.instagram.com/p/CoNWz-njuEX/', 'anecdote', 'sortie');
-
-
-
-
-jour(79, 42.988, 142.400, '10/12/2022', 'https://www.instagram.com/p/CpYEiNhNI--/', 'hokkaido', 'shimukappu', 'neige', 'restaurant', 'curry', 'train');
+jour(71, 35.690485413239806, 139.84417883855835, '02/12/2022', 'https://www.instagram.com/p/Cop-rTmLKSd/', 'anecdote', 'amis','quotidien');
+jour(72, 35.66015681885342, 139.69930771347006, '03/12/2022', 'https://www.instagram.com/p/CosgtyyrTFo/', 'sortie', 'quartier','amis');
+jour(73, 35.66194478033082, 139.6984360946279, '04/12/2022', 'https://www.instagram.com/p/CouLyx2jcpV/', 'shopping', 'sortie');
+jour(74, 35.6887796687505, 139.84284306100014, '05/12/2022', 'https://www.instagram.com/p/Co2iyaRj5bD/', 'anecdote', 'résidence');
+jour(75, 35.69872869735005, 139.77217109198415, '06/12/2022', 'https://www.instagram.com/p/CpK97bptFrH/', 'anecdote', 'balade');
+jour(76, 42.56703056648789, 140.8068332930009, '07/12/2022', 'https://www.instagram.com/p/CpNl_18jEQ0/', 'voyage', 'nourriture');
+jour(77, 42.56537656742409, 140.83238013847438, '08/12/2022', 'https://www.instagram.com/p/CpS4psHrt6T/', 'voyage', 'nourriture', 'nature');
+jour(78, 43.0557143551677, 141.31254092907776, '09/12/2022', 'https://www.instagram.com/p/CpVq3EUjYxW/', 'voyage', 'balade', 'temple', 'musée');
+jour(79, 42.990468582067095, 142.3996139610474, '10/12/2022', 'https://www.instagram.com/p/CpYEiNhNI--/', 'voyage', 'train', 'nourriture','nature');
 
 export { features };
