@@ -17,8 +17,8 @@ import VectorSource from 'ol/source/Vector';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 
-import iconNormal from '/icon-neutre.png';
-import iconActive from '/icon-selected.png';
+import iconNormal from '/icon-neutre.webp';
+import iconActive from '/icon-selected.webp';
 
 import { showCard, hideCard } from './card';
 
