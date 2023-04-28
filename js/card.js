@@ -7,7 +7,8 @@ const contentElement = document.getElementById('card-content');
 /**
  * @param {Date} date
  */
-function formatDate(date) {
+function formatDate(str) {
+    const date = new Date(str);
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();

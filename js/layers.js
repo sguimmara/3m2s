@@ -15,6 +15,11 @@ function loadBasemaps() {
         maxZoom: transition,
     });
 
+    const labels = new TileLayer({
+        source: new Stamen({ layer: 'terrain-labels' }),
+        maxZoom: transition,
+    });
+
     const osm = new TileLayer({
         source: new OSM({
             url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
@@ -22,15 +27,10 @@ function loadBasemaps() {
         minZoom: transition,
     });
 
-    return [watercolor, osm];
+    return [watercolor, osm, labels];
 }
 
-/**
- * Loads a GeoJSON and returns the created layer.
- * @param {string} url The URL to the GeoJSON file.
- * @returns {VectorLayer} The created vector layer.
- */
-async function loadGeoJSON(url) {
+async function loadCities(url) {
     const res = await fetch(url);
     const json = await res.json();
 
@@ -40,7 +40,33 @@ async function loadGeoJSON(url) {
 
     const features = format.readFeatures(json);
 
-    features.forEach(f => f.set('state', 'default'));
+    const layer = new VectorLayer({
+        source: new VectorSource({
+            attributions: 'Morgane Hamon',
+            features,
+        }),
+        style: f => styles.city(f.get('name'))
+    });
+
+    return layer;
+}
+
+/**
+ * Loads a GeoJSON and returns the created layer.
+ * @param {string} url The URL to the GeoJSON file.
+ * @returns {VectorLayer} The created vector layer.
+ */
+async function loadGeoJSON(url, defaultState = 'default') {
+    const res = await fetch(url);
+    const json = await res.json();
+
+    const format = new GeoJSON({
+        featureProjection: 'EPSG:3857'
+    });
+
+    const features = format.readFeatures(json);
+
+    features.forEach(f => f.set('state', defaultState));
 
     const layer = new VectorLayer({
         source: new VectorSource({
@@ -56,4 +82,5 @@ async function loadGeoJSON(url) {
 export {
     loadGeoJSON,
     loadBasemaps,
+    loadCities,
 }
