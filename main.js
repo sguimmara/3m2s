@@ -17,8 +17,8 @@ import VectorSource from 'ol/source/Vector';
 import Style from 'ol/style/Style';
 import Icon from 'ol/style/Icon';
 
-import iconNormal from '/icon-neutre.webp?url';
-import iconActive from '/icon-select.webp?url';
+import iconNormal from '/icon-neutre.png';
+import iconActive from '/icon-select.png';
 
 import { showCard, hideCard } from './card';
 
@@ -40,9 +40,8 @@ const osm = new TileLayer({
     minZoom: transition,
 });
 
-const ratio = 160 / 128;
-const width = 32;
-const size = { width, height: width * ratio };
+
+const size = { width : 26, height: 35 };
 
 function icon(src, factor = 1) {
     return new Icon({
