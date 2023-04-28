@@ -41,7 +41,7 @@ const osm = new TileLayer({
 });
 
 
-const size = { width : 26, height: 35 };
+const size = { width : 29, height: 40 };
 
 function icon(src, factor = 1) {
     return new Icon({
