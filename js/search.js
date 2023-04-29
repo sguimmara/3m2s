@@ -3,6 +3,7 @@ import { hide } from "./states";
 import _ from "lodash";
 
 const activeCategories = new Set();
+const categoryToggles = [];
 
 /**
  * @type {Array<Feature>}
@@ -31,24 +32,33 @@ function toggleFilterCategory(category) {
 
 function setFeaturedCategories(categories) {
     const listElement = document.getElementById('search-category-list');
+    const resetButton = document.getElementById('reset-categories');
+    resetButton.onclick = function () {
+        activeCategories.clear();
+
+        for (const elt of categoryToggles) {
+            elt.classList.remove('category-active');
+        }
+
+        updateFeatures();
+    }
 
     for (const cat of categories) {
-        // <span class="categorie café">café</span>
+        // <button class="categorie café">café</button>
         const elt = document.createElement('button');
+        categoryToggles.push(elt);
         elt.classList = 'toggle category ' + cat;
         elt.innerText = cat;
         elt.onclick = function () {
             const active = toggleFilterCategory(cat);
             if (active) {
-                elt.classList.remove('category-inactive');
+                elt.classList.add('category-active');
             } else {
-                elt.classList.add('category-inactive');
+                elt.classList.remove('category-active');
             }
         }
 
         listElement.appendChild(elt);
-
-        activeCategories.add(cat);
     }
 }
 
@@ -95,7 +105,7 @@ function updateFeatures() {
  */
 function getFilteredFeatureFromCategories() {
     if (activeCategories.size === 0) {
-        return [];
+        return [...searchedFeatures];
     }
 
     /**

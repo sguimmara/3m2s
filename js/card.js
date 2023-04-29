@@ -1,11 +1,9 @@
 const cardElement = document.getElementById('card');
 const dayElement = document.getElementById('day');
 const dateElement = document.getElementById('date');
-const titleElement = document.getElementById('card-title');
-const subtitleElement = document.getElementById('card-subtitle');
 const linkElement = document.getElementById('card-link');
-const contentElement = document.getElementById('card-content');
 const tagContainer = document.getElementById('feature-tags');
+const descriptionElement = document.getElementById('feature-description');
 
 /**
  * @param {Date} date
@@ -42,11 +40,12 @@ function showCard({
     date,
     tags,
     url,
+    description,
 }) {
     cardElement.style.display = 'block';
     dayElement.innerText = title;
     dateElement.innerText = formatDate(date);
-    // subtitleElement.innerText = formatDate(date);
+    descriptionElement.innerText = description;
     for (const child of [...tagContainer.childNodes]) {
         child.remove();
     }

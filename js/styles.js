@@ -26,11 +26,13 @@ const defaultStyle = new Style({
 });
 
 const hoverStyle = new Style({
-    image: icon(iconHover, 1)
+    image: icon(iconHover, 1),
+    zIndex: 5,
 });
 
 const selectedStyle = new Style({
-    image: icon(iconSelected, 1.3)
+    image: icon(iconSelected, 1.3),
+    zIndex: 10,
 });
 
 function city(name) {

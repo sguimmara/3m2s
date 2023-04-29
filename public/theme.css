@@ -14,10 +14,16 @@
   border-radius: 4rem;
 }
 
+.preview {
+    background-color: lightgray;
+    width: 6rem !important;
+    height: 6rem !important;
+}
+
 .info {
-  display: none;
+  /* display: none; */
   background-color: white;
-  width: 20rem;
+  width: 30rem;
   padding: 1rem;
   margin-top: 1rem;
   border-radius: 1rem;
@@ -28,6 +34,8 @@
 .feature-date {
   font-size: smaller;
   color: gray;
+  font-weight: 400;
+  margin-left: 1rem;
 }
 
 .info-desc {
@@ -42,8 +50,24 @@
 /* Catégories */
 
 .category-list {
-    margin-left: 1rem;
-    margin-right: 1rem;
+    /* margin-left: 1rem; */
+    /* margin-right: 1rem; */
+}
+
+.reset-button {
+    border-radius: 1rem;
+    text-align: center;
+    font-size: x-small;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-right: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+    background-color: cornflowerblue;
 }
 
 .category {
@@ -67,8 +91,8 @@
     border-color: gray;
 }
 
-.category-inactive {
-    opacity: 50%;
+.category-active {
+    background-color: yellow !important;
 }
 
 .voyage {

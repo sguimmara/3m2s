@@ -30,6 +30,7 @@
           />
           <!-- Liste des catégories -->
           <div id="search-category-list" class="category-list">
+            <button id="reset-categories" class="reset-button">*</button>
           </div>
         </div>
       </div>
@@ -41,10 +42,22 @@
       >
         <div id="card" class="info">
           <h5><span id="day" class="feature-day">Jour 1</span> <span id="date" class="feature-date">Jour 1</span></h5>
-          <p id="card-content" class="info-desc">Une petite description</p>
-          <div id="feature-tags"></div>
+          <div class="row">
+            <div class="col-auto">
+              <img class="preview">
+            </div>
+            <div class="col-auto">
+              <p id="feature-description" class="info-desc">Une petite description</p>
+              <div id="feature-tags">
+                <span class="category nourriture">nourriture</span>
+                <span class="category nourriture">nourriture</span>
+                <span class="category nourriture">nourriture</span>
+                <span class="category nourriture">nourriture</span>
+              </div>
+            </div>
+          </div>
           <div>
-            <a id="card-link" href="#" target="_blank" class="btn btn-secondary btn-post">Voir le post</a>
+            <a id="card-link" href="#" target="_blank" class="btn btn-primary btn-post">Voir le post</a>
           </div>
         </div>
       </div>
