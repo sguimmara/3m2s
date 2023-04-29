@@ -9,6 +9,7 @@ import VectorLayer from 'ol/layer/Vector';
 
 import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
+import { highlight, select } from './states';
 
 const baseLayers = loadBasemaps();
 
@@ -43,11 +44,12 @@ map.on('pointermove', (evt) => {
         return;
     }
     const features = featureLayer.getSource().getFeatures();
-    features.forEach(f => f.set('state', 'default'));
+    highlight(features, false);
     const picked = map.getFeaturesAtPixel(evt.pixel);
     if (picked.length > 0) {
         const f = picked[0];
-        f.set('state', 'hover');
+
+        highlight(f, true);
     }
 });
 
@@ -69,11 +71,11 @@ map.on('click', (evt) => {
     hideCard();
 
     const features = featureLayer.getSource().getFeatures();
-    features.forEach(f => f.set('state', 'default'));
+    select(features, false);
     const picked = map.getFeaturesAtPixel(evt.pixel);
     if (picked.length > 0) {
         const selected = picked[0];
-        selected.set('state', 'selected');
+        select(selected, true);
 
         setTimeout(() => goTo(selected), 5);
 
