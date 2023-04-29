@@ -1,8 +1,11 @@
 const cardElement = document.getElementById('card');
+const dayElement = document.getElementById('day');
+const dateElement = document.getElementById('date');
 const titleElement = document.getElementById('card-title');
 const subtitleElement = document.getElementById('card-subtitle');
 const linkElement = document.getElementById('card-link');
 const contentElement = document.getElementById('card-content');
+const tagContainer = document.getElementById('feature-tags');
 
 /**
  * @param {Date} date
@@ -26,10 +29,10 @@ function formatDate(str) {
 }
 
 function tag(name) {
-    // <span class="badge rounded-pill text-bg-secondary">cuisine</span>
+    // <span class="category nourriture">nourriture</span>
     const span = document.createElement('span');
-    span.classList = 'badge m-1 rounded-pill text-sm text-bg-secondary';
-    span.innerText = '#' + name;
+    span.classList = 'category ' + name;
+    span.innerText = name;
 
     return span;
 }
@@ -41,12 +44,13 @@ function showCard({
     url,
 }) {
     cardElement.style.display = 'block';
-    titleElement.innerText = title;
-    subtitleElement.innerText = formatDate(date);
-    for (const child of [...contentElement.childNodes]) {
+    dayElement.innerText = title;
+    dateElement.innerText = formatDate(date);
+    // subtitleElement.innerText = formatDate(date);
+    for (const child of [...tagContainer.childNodes]) {
         child.remove();
     }
-    tags.forEach(t => contentElement.appendChild(tag(t)))
+    tags.forEach(t => tagContainer.appendChild(tag(t)))
     linkElement.href = url;
 }
 

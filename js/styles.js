@@ -53,9 +53,12 @@ function city(name) {
     })
 }
 
+const hidden = new Style();
+
 export default {
     'default': defaultStyle,
     'hover': hoverStyle,
     'selected': selectedStyle,
     'city': city,
+    'hidden': hidden,
 }

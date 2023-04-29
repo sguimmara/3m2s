@@ -1,0 +1,116 @@
+.map {
+  width: 100%;
+  height: 100%;
+}
+
+.search {
+  margin-right: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: 3rem;
+}
+
+.btn {
+  border-radius: 4rem;
+}
+
+.info {
+  display: none;
+  background-color: white;
+  width: 20rem;
+  padding: 1rem;
+  margin-top: 1rem;
+  border-radius: 1rem;
+  pointer-events: auto;
+  border: 0;
+}
+
+.feature-date {
+  font-size: smaller;
+  color: gray;
+}
+
+.info-desc {
+  font-size: medium;
+}
+
+.btn-post {
+  margin-top: 1rem;
+  border-radius: 1.5rem !important;
+}
+
+/* Catégories */
+
+.category-list {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.category {
+    border-radius: 1rem;
+    text-align: center;
+    font-size: x-small;
+    font-weight: bold;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-top: 0.2rem;
+    padding-bottom: 0.2rem;
+    margin-right: 0.5rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: transparent;
+}
+
+.category:hover {
+    border-width: 1px;
+    border-style: solid;
+    border-color: gray;
+}
+
+.category-disabled {
+    opacity: 50%;
+}
+
+.voyage {
+  background-color: palegreen;
+}
+
+.musée {
+  background-color: palegreen;
+}
+
+.balade {
+  background-color: palegreen;
+}
+
+.café {
+  background-color: lightpink;
+}
+
+.train {
+  background-color: cadetblue;
+}
+
+.anecdote {
+  background-color: lightcoral;
+}
+
+.aéroport {
+  background-color: paleturquoise;
+}
+
+.temple {
+  background-color: burlywood;
+}
+
+.culture {
+  background-color: palevioletred;
+}
+
+.nature {
+  background-color: palegoldenrod;
+}
+
+.nourriture {
+  background-color: turquoise;
+}

@@ -4,12 +4,10 @@ import { Feature } from "ol"
  * @enum
  */
 const States = {
-    /**
-     * @constant
-     */
     default: 'default',
     hover: 'hover',
     selected: 'selected',
+    hidden: 'hidden',
 }
 
 /**
@@ -31,7 +29,9 @@ function map(xs, fn) {
 function select(features, selected) {
     const state = selected ? States.selected : States.default;
     map(features, feature => {
-        feature.set('state', state);
+        if (feature.get('state') !== States.hidden) {
+            feature.set('state', state);
+        }
     });
 }
 
@@ -42,7 +42,11 @@ function select(features, selected) {
 function highlight(features, highlighted) {
     const state = highlighted ? States.hover : States.default;
     map(features, feature => {
-        if (feature.get('state') === States.selected) {
+        const current = feature.get('state');
+        if (current === States.hidden) {
+            return;
+        }
+        if (current === States.selected) {
             return;
         }
 
@@ -50,7 +54,15 @@ function highlight(features, highlighted) {
     });
 }
 
+function hide(features, hidden) {
+    const state = hidden ? States.hidden : States.default;
+    map(features, feature => {
+        feature.set('state', state);
+    });
+}
+
 export {
     highlight,
     select,
+    hide
 }

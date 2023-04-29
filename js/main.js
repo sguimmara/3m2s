@@ -10,6 +10,7 @@ import VectorLayer from 'ol/layer/Vector';
 import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
 import { highlight, select } from './states';
+import { executeSearch, setFeaturedCategories } from './search';
 
 const baseLayers = loadBasemaps();
 
@@ -25,14 +26,30 @@ const map = new Map({
     }),
 });
 
+function collectAllCategories(features) {
+    const set = new Set();
+    for (const f of features) {
+        for (const tag of f.get('categories')) {
+            set.add(tag);
+        }
+    }
+
+    return [...set];
+}
+
 /**
  * @type {VectorLayer}
  */
 let featureLayer;
 
-loadGeoJSON('/data/features.geojson').then(features => {
-    map.addLayer(features);
-    featureLayer = features;
+loadGeoJSON('/data/features.geojson').then(layer => {
+    map.addLayer(layer);
+    featureLayer = layer;
+    const allFeatures = layer.getSource().getFeatures();
+
+    const categories = collectAllCategories(allFeatures);
+
+    setFeaturedCategories(_.take(categories, 8));
 });
 // loadCities('/cities.geojson')
 //     .then(features => {
@@ -88,7 +105,8 @@ map.on('click', (evt) => {
     }
 });
 
-window.search = function (params) {
+window.search = function (query) {
+    executeSearch(featureLayer.getSource().getFeatures(), query);
     // normal.getSource().clear();
 
     // if (params === "") {
