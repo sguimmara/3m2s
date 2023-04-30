@@ -5,8 +5,9 @@ const linkElement = document.getElementById('card-link');
 const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
+const closeButton = document.getElementById('btn-close');
 
-import { addKeyword, getFeaturedCategories, setActiveCategory } from "./search";
+import { getFeaturedCategories, setActiveCategory } from "./search";
 
 /**
  * @param {Date} date
@@ -51,6 +52,7 @@ function showCard({
     dayElement.innerText = title;
     dateElement.innerText = formatDate(date);
     descriptionElement.innerText = description;
+    closeButton.onclick = function () { hideCard(); };
 
     thumbnailElt.src = thumbnailUrl;
 

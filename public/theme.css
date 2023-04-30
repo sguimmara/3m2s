@@ -63,7 +63,7 @@
 }
 
 .info {
-  display: none;
+  /* display: none; */
   background-color: white;
   padding: 1rem;
   border-radius: 1rem;
@@ -145,7 +145,10 @@
   font-family: 'Roboto condensed';
 }
 
-
+.btn-close {
+  background-color: transparent;
+  border-style: none;
+}
 
 .bouton-post {
   border-radius: 1.5rem;
