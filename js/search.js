@@ -11,9 +11,16 @@ const categoryToggles = [];
 let searchedFeatures;
 
 /**
+ * @type {HTMLInputElement}
+ */
+let searchBar;
+
+/**
  * @type {string}
  */
 let searchQuery = '';
+
+let searchKeywords = [];
 
 function toggleFilterCategory(category) {
     let result;
@@ -97,11 +104,17 @@ function setSearchedFeatures(features) {
 function setSearchQuery(query) {
     searchQuery = query;
 
+    searchKeywords = searchQuery
+        .split(',')
+        .map(w => w.trim())
+        .map(s => s.toLowerCase())
+        .filter(s => s.length > 0);
+
     updateFeatures();
 }
 
 function updateFeatures() {
-    const queriedVisible = getFilteredFeatureFromQuery();
+    const queriedVisible = getFilteredFeatureFromKeywords();
     const categoryVisible = getFilteredFeatureFromCategories();
 
     const intersection = _.intersection(queriedVisible, categoryVisible);
@@ -141,21 +154,39 @@ function getFilteredFeatureFromCategories() {
 /**
  * @returns {Array<Feature>}
  */
-function getFilteredFeatureFromQuery() {
-    if (searchQuery === '') {
+function getFilteredFeatureFromKeywords() {
+    if (searchKeywords.length === 0) {
         return [...searchedFeatures];
     } else {
-        const keywords = searchQuery
-            .split(',')
-            .map(w => w.trim())
-            .map(s => s.toLowerCase());
+        return searchedFeatures.filter(f => matchesKeywords(f, searchKeywords));
+    }
+}
 
-        return searchedFeatures.filter(f => matchesKeywords(f, keywords));
+/**
+ * @param {string} keyword
+ */
+function addKeyword(keyword) {
+    if (keyword) {
+        if (searchKeywords.includes(keyword.trim())) {
+            return;
+        }
+        searchKeywords.push(keyword.trim());
+        searchBar.value = (searchBar.value.trim().length > 0 ? searchBar.value + ', ' : '') + keyword;
+        updateFeatures();
+    }
+}
+
+function init() {
+    searchBar = document.getElementById('search-bar');
+    searchBar.oninput = function () {
+        setSearchQuery(searchBar.value);
     }
 }
 
 export {
+    init,
     setSearchedFeatures,
     setSearchQuery,
     setFeaturedCategories,
+    addKeyword,
 }

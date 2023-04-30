@@ -10,7 +10,7 @@ import VectorLayer from 'ol/layer/Vector';
 import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
 import { highlight, select } from './states';
-import { setFeaturedCategories, setSearchQuery, setSearchedFeatures } from './search';
+import { init, setFeaturedCategories, setSearchQuery, setSearchedFeatures } from './search';
 
 const baseLayers = loadBasemaps();
 
@@ -107,66 +107,4 @@ map.on('click', (evt) => {
     }
 });
 
-window.search = function (query) {
-    setSearchQuery(query);
-    // normal.getSource().clear();
-
-    // if (params === "") {
-    //     filteredFeatures = [...features];
-    //     resetFeatures();
-    //     return;
-    // }
-
-    // const keywords = params
-    //     .split(',')
-    //     .map(w => w.trim())
-    //     .map(s => s.toLowerCase());
-
-    // filteredFeatures.length = 0;
-
-    // function test(feature) {
-    //     const name = feature.get('name').toLowerCase();
-    //     if (keywords.some(kw => name.includes(kw))) {
-    //         return true;
-    //     }
-
-    //     const tags = feature.get('tags');
-    //     if (tags.some(t => keywords.some(kw => t.toLowerCase().includes(kw)))) {
-    //         return true;
-    //     }
-
-    //     return false;
-    // }
-
-    // for (const feature of features) {
-    //     if (feature && test(feature)) {
-    //         filteredFeatures.push(feature);
-    //     }
-    // }
-
-    // resetFeatures();
-}
-
-function addDate(num) {
-    if (num < 0) {
-        return;
-    }
-
-    if (num >= features.length) {
-        return;
-    }
-
-    const f = features[num];
-    if (f) {
-        source.addFeature(f);
-    }
-}
-
-window.setDate = function (txt) {
-    // source.clear();
-
-    // const date = Number.parseInt(txt);
-    // addDate(date - 1);
-    // addDate(date);
-    // addDate(date + 1);
-}
+init();

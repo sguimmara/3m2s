@@ -6,6 +6,8 @@ const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
 
+import { addKeyword } from "./search";
+
 /**
  * @param {Date} date
  */
@@ -28,12 +30,13 @@ function formatDate(str) {
 }
 
 function tag(name) {
-    // <span class="category nourriture">nourriture</span>
-    const span = document.createElement('span');
-    span.classList = 'category ' + name;
-    span.innerText = name;
+    // <button class="category nourriture">nourriture</button>
+    const elt = document.createElement('button');
+    elt.classList = 'toggle category ' + name;
+    elt.innerText = name;
+    elt.onclick = function () { addKeyword(name); }
 
-    return span;
+    return elt;
 }
 
 function showCard({

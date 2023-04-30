@@ -16,15 +16,16 @@
   </head>
   <body>
     <div class="position-relative vh-100 vw-100">
+
       <!-- Carte interactive -->
       <div id="map" class="map position-absolute top-0 end-0"></div>
-<div class="title">test</div>
+
       <!-- Recherche -->
       <div class="w-100 position-absolute top-0 end-0">
         <div class="search">
           <div class="title"></div>
           <input
-          oninput="search(this.value)"
+          id="search-bar"
           type="search"
           class="rounded-pill form-control"
           placeholder="Rechercher..."
@@ -37,7 +38,7 @@
         </div>
       </div>
 
-      <!-- Carte du jour -->
+      <!-- Encart du jour -->
       <div
         class="position-absolute start-50 top-50 translate-middle-x p-4 "
         style="pointer-events: none;"
