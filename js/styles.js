@@ -1,5 +1,6 @@
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
+import { States } from "./states";
 
 const size = { width: 29, height: 40 };
 
@@ -14,25 +15,79 @@ function icon(src, factor = 1) {
     });
 }
 
-const defaultStyle = new Style({
-    image: icon('/images/icon-neutre.png')
-});
+function normal(src) {
+    return new Style({
+        image: icon(src),
+    });
+}
 
-const hoverStyle = new Style({
-    image: icon('/images/icon-marine.png', 1),
-    zIndex: 5,
-});
+function selected(src) {
+    return new Style({
+        image: icon(src, 1.3),
+        zIndex: 10,
+    });
+}
 
-const selectedStyle = new Style({
-    image: icon('/images/icon-select.png', 1.3),
-    zIndex: 10,
-});
+function hover(src) {
+    return new Style({
+        image: icon(src),
+        zIndex: 5,
+    });
+}
 
-const hidden = new Style();
+const styles = {
+    'hidden': new Style(),
 
-export default {
-    'default': defaultStyle,
-    'hover': hoverStyle,
-    'selected': selectedStyle,
-    'hidden': hidden,
+    // Default styles
+    'default': normal('/images/pin.png'),
+    'hover': hover('/images/pin-hover.png'),
+    'selected':  selected('/images/pin-selected.png'),
+
+    // Category-specific styles
+    'anecdote': normal('/images/pin-anecdote.png'),
+    'hover-anecdote': normal('/images/pin-hover-anecdote.png'),
+
+    'balade': normal('/images/pin-balade.png'),
+    'hover-balade': normal('/images/pin-hover-balade.png'),
+
+    'culture': normal('/images/pin-culture.png'),
+    'hover-culture': normal('/images/pin-hover-culture.png'),
+
+    'nourriture': normal('/images/pin-nourriture.png'),
+    'hover-nourriture': normal('/images/pin-hover-nourriture.png'),
+
+    'quotidien': normal('/images/pin-quotidien.png'),
+    'hover-quotidien': normal('/images/pin-hover-quotidien.png'),
+
+    'balade': normal('/images/pin-balade.png'),
+    'hover-balade': normal('/images/pin-hover-balade.png'),
+
+    'sortie': normal('/images/pin-sortie.png'),
+    'hover-sortie': normal('/images/pin-hover-sortie.png'),
+
+    'voyage': normal('/images/pin-voyage.png'),
+    'hover-voyage': normal('/images/pin-hover-voyage.png'),
+}
+
+/**
+ * @param {Set<string>} states
+ */
+function getStyle(states) {
+    if (states.has('hidden')) {
+        return styles['hidden'];
+    }
+
+    if (states.has('selected')) {
+        return styles['selected'];
+    }
+
+    if (states.has('hover')) {
+        return styles['hover'];
+    }
+
+    return styles['default'];
+}
+
+export {
+    getStyle,
 }

@@ -27,11 +27,15 @@ function map(xs, fn) {
  * @param {boolean} selected
  */
 function select(features, selected) {
-    const state = selected ? States.selected : States.default;
     map(features, feature => {
-        if (feature.get('state') !== States.hidden) {
-            feature.set('state', state);
+        const current = feature.get('state');
+        if (selected) {
+            current.add(States.selected);
+        } else {
+            current.delete(States.selected);
         }
+        feature.set('state', current);
+        feature.set('rev', feature.get('rev') + 1);
     });
 }
 
@@ -40,29 +44,35 @@ function select(features, selected) {
  * @param {boolean} highlighted
  */
 function highlight(features, highlighted) {
-    const state = highlighted ? States.hover : States.default;
     map(features, feature => {
         const current = feature.get('state');
-        if (current === States.hidden) {
-            return;
+        if (!highlighted) {
+            current.delete(States.hover);
+        } else {
+            current.add(States.hover);
         }
-        if (current === States.selected) {
-            return;
-        }
-
-        feature.set('state', state);
+        feature.set('state', current);
+        feature.set('rev', feature.get('rev') + 1);
     });
 }
 
 function hide(features, hidden) {
-    const state = hidden ? States.hidden : States.default;
     map(features, feature => {
-        feature.set('state', state);
+        const current = feature.get('state');
+
+        if (hidden) {
+            current.add(States.hidden);
+        } else {
+            current.delete(States.hidden);
+        }
+        feature.set('state', current);
+        feature.set('rev', feature.get('rev') + 1);
     });
 }
 
 export {
     highlight,
     select,
-    hide
+    hide,
+    States,
 }
