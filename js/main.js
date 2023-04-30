@@ -51,8 +51,10 @@ map.on('pointermove', (evt) => {
     const picked = map.getFeaturesAtPixel(evt.pixel);
     if (picked.length > 0) {
         const f = picked[0];
-
+        document.body.style.cursor = "pointer";
         highlight(f, true);
+    } else {
+        document.body.style.cursor = "auto";
     }
 });
 
