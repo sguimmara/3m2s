@@ -87,6 +87,11 @@ function matchesKeywords(feature, keywords) {
         return true;
     }
 
+    const day = `${feature.get('day')}`;
+    if (keywords.some(kw => day === kw)) {
+        return true;
+    }
+
     /** @type {string} */
     const description = feature.get('description');
 
