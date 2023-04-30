@@ -9,12 +9,14 @@ import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
 import { highlight, select } from './states';
 import { initSearch, setFeaturedCategories } from './search';
+import { initNavigation } from './navigation';
 
 const baseLayers = loadBasemaps();
 
 const map = new Map({
     layers: baseLayers,
     target: 'map',
+    controls: [],
     view: new View({
         projection: 'EPSG:3857',
         center: fromLonLat([139.340, 38.822]),
@@ -37,6 +39,8 @@ loadGeoJSON('/data/features.geojson').then(layer => {
     initSearch(allFeatures);
 
     setFeaturedCategories(['nourriture', 'voyage', 'quotidien','culture', 'sortie','balade','anecdote']);
+
+    initNavigation(map);
 });
 
 map.on('pointermove', (evt) => {
