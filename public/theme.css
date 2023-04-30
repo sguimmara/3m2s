@@ -31,7 +31,7 @@
 }
 
 .card-container {
-    width: 30rem;
+    width: 20rem;
     height: 20rem;
     max-width: 100%;
     max-height: 40%;
@@ -94,7 +94,7 @@
   font-family: 'Roboto condensed';
 }
 
-.bouton-post {
+/*.bouton-post {
   color : #FFF;
   margin-top: 1rem;
   padding-left: 1rem;
@@ -106,13 +106,58 @@
   font-family: 'Roboto condensed';
   font-size: 1.2rem;
   text-decoration: none;
+  text-align: center;
+  transition: all 0.5s;
+  cursor: pointer;
+  
+} */
 
+.bouton-post {
+  border-radius: 1.5rem;
+  background-color: #FF6E6E;
+  border: none;
+  font-family: 'Roboto condensed';
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 1.2rem;
+  text-decoration: none;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 200px;
+  height: 40px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
 }
 
-.bouton-post:hover {
-  filter: brightness(150%);
 
+
+.bouton-post  span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
+
+.bouton-post  span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.bouton-post:hover span {
+  padding-right: 25px;
+}
+
+.bouton-post:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
 
 /* Catégories */
 
@@ -151,6 +196,12 @@
 .category:hover {
 
     filter: brightness(150%);
+
+      cursor: pointer;
+      display: inline-block;
+      position: relative;
+      transition: 0.5s;
+
 }
 
 .category-active {
