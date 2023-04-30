@@ -7,11 +7,14 @@ import Stamen from 'ol/source/Stamen.js';
 
 import styles from './styles';
 import { Feature } from "ol";
+import { getVectorContext } from "ol/render";
+import { Fill, Style } from "ol/style";
 
 function loadBasemaps() {
     const transition = 16;
 
     const watercolor = new TileLayer({
+        className: 'background',
         source: new Stamen({ layer: 'watercolor' }),
         maxZoom: transition,
     });
@@ -21,6 +24,33 @@ function loadBasemaps() {
         maxZoom: transition,
     });
 
+    const clipLayer = new VectorLayer({
+        style: null,
+        source: new VectorSource({
+            url: '/data/mask.geojson',
+            format: new GeoJSON(),
+        }),
+    });
+
+    const style = new Style({
+        fill: new Fill({
+            color: 'black',
+        }),
+    });
+
+    clipLayer.getSource().on('addfeature', function () {
+        labels.setExtent(clipLayer.getSource().getExtent());
+    });
+
+    labels.on('postrender', function (e) {
+        const vectorContext = getVectorContext(e);
+        e.context.globalCompositeOperation = 'destination-in';
+        clipLayer.getSource().forEachFeature(function (feature) {
+            vectorContext.drawFeature(feature, style);
+        });
+        e.context.globalCompositeOperation = 'source-over';
+    });
+
     const osm = new TileLayer({
         source: new OSM({
             url: 'https://a.tile.openstreetmap.fr/hot/{z}/{x}/{y}.png',
@@ -28,7 +58,7 @@ function loadBasemaps() {
         minZoom: transition,
     });
 
-    return [watercolor, osm, labels];
+    return [watercolor, osm, labels, clipLayer];
 }
 
 async function loadCities(url) {
