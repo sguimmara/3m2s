@@ -62,9 +62,22 @@ function setFeaturedCategories(categories) {
     }
 }
 
+/**
+ *
+ * @param {Feature} feature
+ * @param {Array<string>} keywords
+ * @returns {boolean}
+ */
 function matchesKeywords(feature, keywords) {
     const tags = feature.get('categories');
     if (tags.some(t => keywords.some(kw => t.toLowerCase().includes(kw)))) {
+        return true;
+    }
+
+    /** @type {string} */
+    const description = feature.get('description');
+
+    if (keywords.some(kw => description.includes(kw))) {
         return true;
     }
 
