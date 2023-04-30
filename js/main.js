@@ -1,6 +1,5 @@
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
-import { easeOut } from 'ol/easing.js';
 import { fromLonLat } from 'ol/proj';
 
 import VectorLayer from 'ol/layer/Vector';
@@ -9,7 +8,7 @@ import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
 import { highlight, select } from './states';
 import { initSearch, setFeaturedCategories } from './search';
-import { initNavigation } from './navigation';
+import { goTo, initNavigation } from './navigation';
 
 const baseLayers = loadBasemaps();
 
@@ -56,16 +55,6 @@ map.on('pointermove', (evt) => {
         highlight(f, true);
     }
 });
-
-function goTo(feature) {
-    const currentZoom = map.getView().getZoom();
-    map.getView().animate({
-        center: feature.getGeometry().getFirstCoordinate(),
-        duration: 1000,
-        easing: easeOut,
-        zoom: currentZoom < 10 ? 10 : undefined,
-    });
-}
 
 map.on('click', (evt) => {
     if  (!featureLayer) {
