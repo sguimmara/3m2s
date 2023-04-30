@@ -193,20 +193,31 @@
 /* Catégories */
 
 .reset-button {
+    width: 1.8rem;
+    height: 1.8rem;
     color: #FFF;
     text-align: center;
     font-size: 0.7rem;
     font-weight: bold;
     border-radius: 1rem;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-bottom: 0.2rem;
     margin-right: 0.5rem;
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
-    background-color: cornflowerblue;
-    text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+    background-color: #a0a0a0;
+}
+
+.reset-button img {
+
+  width: 15px;
+  height: 15px ;
+
+}
+
+.reset-button:hover{
+
+  filter: brightness(120%);
+
 }
 
 .category {
