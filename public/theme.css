@@ -78,7 +78,13 @@
     border-width: 1px;
     border-style: solid;
     border-color: transparent;
+    background-color: #AFAFAF;
+    color : #FFF;
+    font-family: 'Roboto Condensed';font-size: 12px;
+  
 }
+
+
 
 .category:hover {
     border-width: 1px;
@@ -88,48 +94,48 @@
 
 .category-active {
     background-color: yellow !important;
-}
-
-.voyage {
-  background-color: palegreen;
-}
-
-.musée {
-  background-color: palegreen;
-}
-
-.balade {
-  background-color: palegreen;
-}
-
-.café {
-  background-color: lightpink;
-}
-
-.train {
-  background-color: cadetblue;
-}
-
-.anecdote {
-  background-color: lightcoral;
-}
-
-.aéroport {
-  background-color: paleturquoise;
-}
-
-.temple {
-  background-color: burlywood;
-}
-
-.culture {
-  background-color: palevioletred;
-}
-
-.nature {
-  background-color: palegoldenrod;
+    
 }
 
 .nourriture {
-  background-color: turquoise;
+  background-color: #FEEA00;
+  color : #FFF;
+  
 }
+
+.voyage {
+  background-color: #0FDBCA;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+.quotidien {
+  background-color: #9DCC4E;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+
+.culture {
+  background-color: #186B57;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+.sortie {
+  background-color: #6E2DBE;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+
+.balade {
+  background-color: #BC9BDB;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+
+.anecdote {
+  background-color: #FF3D94;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
+}
+
+
+
+

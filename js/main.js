@@ -49,10 +49,7 @@ loadGeoJSON('/data/features.geojson').then(layer => {
 
     setSearchedFeatures(allFeatures);
 
-    const categories = collectAllCategories(allFeatures);
-
-    // TODO remplacer par la vraie liste des catégories
-    setFeaturedCategories(_.take(categories, 8));
+    setFeaturedCategories(['nourriture', 'voyage', 'quotidien','culture', 'sortie','balade','anecdote']);
 });
 // loadCities('/cities.geojson')
 //     .then(features => {
