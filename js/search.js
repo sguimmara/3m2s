@@ -1,5 +1,5 @@
 import { Feature } from "ol";
-import { hide } from "./states";
+import { hide, toggleCategory } from "./states";
 import _ from "lodash";
 
 const activeCategories = new Set();
@@ -132,7 +132,10 @@ function updateFeatures() {
 
     hide(searchedFeatures, true);
 
+    const enableCategory = activeCategories.size > 0;
+
     for (const f of intersection) {
+        toggleCategory(f, enableCategory);
         hide(f, false);
     }
 }
@@ -196,7 +199,12 @@ function setActiveCategory(category) {
     updateFeatures();
 }
 
+function getActiveCategories() {
+    return activeCategories;
+}
+
 export {
+    getActiveCategories,
     setActiveCategory,
     getFeaturedCategories,
     initSearch,

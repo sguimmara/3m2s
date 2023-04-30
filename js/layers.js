@@ -5,10 +5,11 @@ import TileLayer from 'ol/layer/Tile.js';
 import OSM from 'ol/source/OSM.js';
 import Stamen from 'ol/source/Stamen.js';
 
-import styles from './styles';
+import { getStyle } from './styles';
 import { Feature } from "ol";
 import { getVectorContext } from "ol/render";
 import { Fill, Style } from "ol/style";
+import { getActiveCategories } from "./search";
 
 function loadBasemaps() {
     const transition = 16;
@@ -92,7 +93,7 @@ function validate(feature) {
  * @param {string} url The URL to the GeoJSON file.
  * @returns {VectorLayer} The created vector layer.
  */
-async function loadFeatures(url, defaultState = 'default') {
+async function loadFeatures(url) {
     const res = await fetch(url);
     const json = await res.json();
 
@@ -104,7 +105,8 @@ async function loadFeatures(url, defaultState = 'default') {
 
     features.forEach(f => {
         validate(f);
-        f.set('state', defaultState)
+        f.set('state', new Set());
+        f.set('rev', 0);
     });
 
     const layer = new VectorLayer({
@@ -112,7 +114,7 @@ async function loadFeatures(url, defaultState = 'default') {
             attributions: 'Morgane Hamon',
             features,
         }),
-        style: f => styles[f.get('state')]
+        style: f => getStyle(f, getActiveCategories())
     });
 
     return layer;

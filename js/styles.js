@@ -1,5 +1,7 @@
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
+import { Feature } from "ol";
+import _ from "lodash";
 
 const size = { width: 29, height: 40 };
 
@@ -14,25 +16,102 @@ function icon(src, factor = 1) {
     });
 }
 
-const defaultStyle = new Style({
-    image: icon('/images/icon-neutre.png')
-});
+function normal(src) {
+    return new Style({
+        image: icon(src),
+    });
+}
 
-const hoverStyle = new Style({
-    image: icon('/images/icon-marine.png', 1),
-    zIndex: 5,
-});
+function selected(src) {
+    return new Style({
+        image: icon(src, 1.3),
+        zIndex: 10,
+    });
+}
 
-const selectedStyle = new Style({
-    image: icon('/images/icon-select.png', 1.3),
-    zIndex: 10,
-});
+function hover(src) {
+    return new Style({
+        image: icon(src),
+        zIndex: 5,
+    });
+}
 
-const hidden = new Style();
+const styles = {
+    'hidden': new Style(),
 
-export default {
-    'default': defaultStyle,
-    'hover': hoverStyle,
-    'selected': selectedStyle,
-    'hidden': hidden,
+    // Default styles
+    'default': normal('/images/pin.png'),
+    'hover': hover('/images/pin-hover.png'),
+    'selected':  selected('/images/pin-selected.png'),
+
+    // Category-specific styles
+    'anecdote': normal('/images/pin-anecdote.png'),
+    'hover-anecdote': hover('/images/pin-hover-anecdote.png'),
+
+    'balade': normal('/images/pin-balade.png'),
+    'hover-balade': hover('/images/pin-hover-balade.png'),
+
+    'culture': normal('/images/pin-culture.png'),
+    'hover-culture': hover('/images/pin-hover-culture.png'),
+
+    'nourriture': normal('/images/pin-nourriture.png'),
+    'hover-nourriture': hover('/images/pin-hover-nourriture.png'),
+
+    'quotidien': normal('/images/pin-quotidien.png'),
+    'hover-quotidien': hover('/images/pin-hover-quotidien.png'),
+
+    'balade': normal('/images/pin-balade.png'),
+    'hover-balade': hover('/images/pin-hover-balade.png'),
+
+    'sortie': normal('/images/pin-sortie.png'),
+    'hover-sortie': hover('/images/pin-hover-sortie.png'),
+
+    'voyage': normal('/images/pin-voyage.png'),
+    'hover-voyage': hover('/images/pin-hover-voyage.png'),
+}
+
+/**
+ * @param {Feature} states
+ * @param {Array<string>} activeCategories
+ */
+function getStyle(feature, activeCategories) {
+    const states = feature.get('state');
+
+    if (states.has('hidden')) {
+        return styles['hidden'];
+    }
+
+    if (states.has('selected')) {
+        return styles['selected'];
+    }
+
+    const categories = feature.get('categories');
+
+    if (states.has('hover')) {
+        if (states.has('category')) {
+            for (const c of categories) {
+                if (activeCategories.has(c)) {
+                    return styles[`hover-${c}`];
+                }
+            }
+        } else {
+            return styles['hover'];
+        }
+    }
+
+    if (states.has('category')) {
+        for (const c of categories) {
+            if (activeCategories.has(c)) {
+                return styles[`${c}`];
+            }
+        }
+    }
+
+    return styles[`${categories[0]}`];
+
+    // return styles['default'];
+}
+
+export {
+    getStyle,
 }
