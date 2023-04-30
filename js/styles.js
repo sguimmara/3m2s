@@ -85,10 +85,11 @@ function getStyle(feature, activeCategories) {
         return styles['selected'];
     }
 
+    const categories = feature.get('categories');
+
     if (states.has('hover')) {
         if (states.has('category')) {
-            const featureCats = feature.get('categories');
-            for (const c of featureCats) {
+            for (const c of categories) {
                 if (activeCategories.has(c)) {
                     return styles[`hover-${c}`];
                 }
@@ -99,15 +100,16 @@ function getStyle(feature, activeCategories) {
     }
 
     if (states.has('category')) {
-        const featureCats = feature.get('categories');
-        for (const c of featureCats) {
+        for (const c of categories) {
             if (activeCategories.has(c)) {
                 return styles[`${c}`];
             }
         }
     }
 
-    return styles['default'];
+    return styles[`${categories[0]}`];
+
+    // return styles['default'];
 }
 
 export {
