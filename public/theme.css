@@ -38,9 +38,8 @@
   margin-bottom: 1rem;
 }
 
-.btn-nav {
-  margin-left: 10pt;
-  margin-right: 10pt;
+.btn-row {
+  margin: 10pt;
 }
 
 .btn-round {
@@ -49,7 +48,6 @@
   border-color: gray;
   background-color: white;
   border-radius: 100%;
-  margin: 5pt;
   width: 40pt !important;
   height: 40pt !important;
 }
@@ -65,6 +63,50 @@
   border-radius: 1rem;
   pointer-events: auto;
   border: 0;
+  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3); 
+  animation: fadein 0.6s;
+    -moz-animation: fadein 0.6s; /* Firefox */
+    -webkit-animation: fadein 0.6s; /* Safari et Chrome */
+    -o-animation: fadein 0.6s; /* Opera */
+}
+
+@keyframes fadein {
+  from {
+      opacity:0;
+      margin-top: 3em;
+  }
+  to {
+      opacity:1;
+      
+  }
+}
+@-moz-keyframes fadein { /* sur Firefox */
+  from {
+      opacity:0;
+      margin-top: 3em;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-webkit-keyframes fadein { /* sur Safari et Chrome */
+  from {
+      opacity:0;
+      margin-top: 3em;
+  }
+  to {
+      opacity:1;
+  }
+}
+@-o-keyframes fadein { /* sur Opera */
+  from {
+      opacity:0;
+      margin-top: 3em;
+  }
+  to {
+      opacity: 1;
+      margin-top: auto;
+  }
 }
 
 .feature-tags {
@@ -97,23 +139,7 @@
   font-family: 'Roboto condensed';
 }
 
-/*.bouton-post {
-  color : #FFF;
-  margin-top: 1rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  padding-top: 0.3rem;
-  padding-bottom: 0.3rem;
-  border-radius: 1.5rem !important;
-  background-color: #FF6E6E;
-  font-family: 'Roboto condensed';
-  font-size: 1.2rem;
-  text-decoration: none;
-  text-align: center;
-  transition: all 0.5s;
-  cursor: pointer;
 
-} */
 
 .bouton-post {
   border-radius: 1.5rem;
