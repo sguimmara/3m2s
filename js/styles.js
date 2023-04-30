@@ -1,6 +1,7 @@
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
-import { States } from "./states";
+import { Feature } from "ol";
+import _ from "lodash";
 
 const size = { width: 29, height: 40 };
 
@@ -45,34 +46,37 @@ const styles = {
 
     // Category-specific styles
     'anecdote': normal('/images/pin-anecdote.png'),
-    'hover-anecdote': normal('/images/pin-hover-anecdote.png'),
+    'hover-anecdote': hover('/images/pin-hover-anecdote.png'),
 
     'balade': normal('/images/pin-balade.png'),
-    'hover-balade': normal('/images/pin-hover-balade.png'),
+    'hover-balade': hover('/images/pin-hover-balade.png'),
 
     'culture': normal('/images/pin-culture.png'),
-    'hover-culture': normal('/images/pin-hover-culture.png'),
+    'hover-culture': hover('/images/pin-hover-culture.png'),
 
     'nourriture': normal('/images/pin-nourriture.png'),
-    'hover-nourriture': normal('/images/pin-hover-nourriture.png'),
+    'hover-nourriture': hover('/images/pin-hover-nourriture.png'),
 
     'quotidien': normal('/images/pin-quotidien.png'),
-    'hover-quotidien': normal('/images/pin-hover-quotidien.png'),
+    'hover-quotidien': hover('/images/pin-hover-quotidien.png'),
 
     'balade': normal('/images/pin-balade.png'),
-    'hover-balade': normal('/images/pin-hover-balade.png'),
+    'hover-balade': hover('/images/pin-hover-balade.png'),
 
     'sortie': normal('/images/pin-sortie.png'),
-    'hover-sortie': normal('/images/pin-hover-sortie.png'),
+    'hover-sortie': hover('/images/pin-hover-sortie.png'),
 
     'voyage': normal('/images/pin-voyage.png'),
-    'hover-voyage': normal('/images/pin-hover-voyage.png'),
+    'hover-voyage': hover('/images/pin-hover-voyage.png'),
 }
 
 /**
- * @param {Set<string>} states
+ * @param {Feature} states
+ * @param {Array<string>} activeCategories
  */
-function getStyle(states) {
+function getStyle(feature, activeCategories) {
+    const states = feature.get('state');
+
     if (states.has('hidden')) {
         return styles['hidden'];
     }
@@ -82,7 +86,25 @@ function getStyle(states) {
     }
 
     if (states.has('hover')) {
-        return styles['hover'];
+        if (states.has('category')) {
+            const featureCats = feature.get('categories');
+            for (const c of featureCats) {
+                if (activeCategories.has(c)) {
+                    return styles[`hover-${c}`];
+                }
+            }
+        } else {
+            return styles['hover'];
+        }
+    }
+
+    if (states.has('category')) {
+        const featureCats = feature.get('categories');
+        for (const c of featureCats) {
+            if (activeCategories.has(c)) {
+                return styles[`${c}`];
+            }
+        }
     }
 
     return styles['default'];

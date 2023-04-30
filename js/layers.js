@@ -9,6 +9,7 @@ import { getStyle } from './styles';
 import { Feature } from "ol";
 import { getVectorContext } from "ol/render";
 import { Fill, Style } from "ol/style";
+import { getActiveCategories } from "./search";
 
 function loadBasemaps() {
     const transition = 16;
@@ -113,7 +114,7 @@ async function loadFeatures(url) {
             attributions: 'Morgane Hamon',
             features,
         }),
-        style: f => getStyle(f.get('state'))
+        style: f => getStyle(f, getActiveCategories())
     });
 
     return layer;

@@ -8,6 +8,7 @@ const States = {
     hover: 'hover',
     selected: 'selected',
     hidden: 'hidden',
+    category: 'category',
 }
 
 /**
@@ -70,9 +71,24 @@ function hide(features, hidden) {
     });
 }
 
+function toggleCategory(features, enable) {
+    map(features, feature => {
+        const current = feature.get('state');
+
+        if (enable) {
+            current.add(States.category);
+        } else {
+            current.delete(States.category);
+        }
+        feature.set('state', current);
+        feature.set('rev', feature.get('rev') + 1);
+    });
+}
+
 export {
     highlight,
     select,
     hide,
+    toggleCategory,
     States,
 }
