@@ -3,6 +3,7 @@ const dayElement = document.getElementById('day');
 const dateElement = document.getElementById('date');
 const linkElement = document.getElementById('card-link');
 const tagContainer = document.getElementById('feature-tags');
+const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
 
 /**
@@ -40,12 +41,16 @@ function showCard({
     date,
     tags,
     url,
+    thumbnailUrl,
     description,
 }) {
     cardElement.style.display = 'block';
     dayElement.innerText = title;
     dateElement.innerText = formatDate(date);
     descriptionElement.innerText = description;
+
+    thumbnailElt.src = thumbnailUrl;
+
     for (const child of [...tagContainer.childNodes]) {
         child.remove();
     }

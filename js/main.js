@@ -102,6 +102,7 @@ map.on('click', (evt) => {
             date: selected.get('date'),
             tags: selected.get('categories'),
             description: selected.get('description'),
+            thumbnailUrl: selected.get('thumbnailUrl')
         });
     }
 });
