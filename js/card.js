@@ -6,7 +6,7 @@ const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
 
-import { addKeyword } from "./search";
+import { addKeyword, getFeaturedCategories } from "./search";
 
 /**
  * @param {Date} date
@@ -54,10 +54,16 @@ function showCard({
 
     thumbnailElt.src = thumbnailUrl;
 
+    const featuredCategories = getFeaturedCategories();
+
     for (const child of [...tagContainer.childNodes]) {
         child.remove();
     }
-    tags.forEach(t => tagContainer.appendChild(tag(t)))
+    tags.forEach(t => {
+        if (featuredCategories.includes(t)) {
+            tagContainer.appendChild(tag(t))
+        }
+    })
     linkElement.href = url;
 }
 

@@ -4,6 +4,7 @@ import _ from "lodash";
 
 const activeCategories = new Set();
 const categoryToggles = [];
+let featuredCategories = [];
 
 /**
  * @type {Array<Feature>}
@@ -40,6 +41,7 @@ function toggleFilterCategory(category) {
 function setFeaturedCategories(categories) {
     const listElement = document.getElementById('search-category-list');
     const resetButton = document.getElementById('reset-categories');
+    featuredCategories = categories;
     resetButton.onclick = function () {
         activeCategories.clear();
 
@@ -67,6 +69,10 @@ function setFeaturedCategories(categories) {
 
         listElement.appendChild(elt);
     }
+}
+
+function getFeaturedCategories() {
+    return featuredCategories;
 }
 
 /**
@@ -182,6 +188,7 @@ function addKeyword(keyword) {
 }
 
 export {
+    getFeaturedCategories,
     initSearch,
     setSearchQuery,
     setFeaturedCategories,
