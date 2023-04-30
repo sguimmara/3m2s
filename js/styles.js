@@ -95,7 +95,7 @@ function getStyle(feature, activeCategories) {
                 }
             }
         } else {
-            return styles['hover'];
+            return styles[`hover-${categories[0]}`];
         }
     }
 
