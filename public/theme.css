@@ -1,3 +1,10 @@
+@font-face {
+	font-family: 'Letters for Learners';
+	src: url(‘/font/LettersforLearners.woff2’) format(‘woff2’),
+		url(‘/font/Letters-for-Learners.ttf’) format(‘truetype’)
+
+  }
+
 .map {
   width: 100%;
   height: 100%;
@@ -58,6 +65,16 @@
   font-weight: 400;
   margin-left: 1rem;
 }
+
+.feature-day {
+  font-size: smaller;
+  color: gray;
+  font-weight: 400;
+  margin-left: 1rem;
+  font-family: 'Letters for Learners';
+}
+
+
 
 .info-desc {
   font-size: medium;
