@@ -6,7 +6,7 @@ const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
 
-import { addKeyword, getFeaturedCategories } from "./search";
+import { addKeyword, getFeaturedCategories, setActiveCategory } from "./search";
 
 /**
  * @param {Date} date
@@ -34,7 +34,7 @@ function tag(name) {
     const elt = document.createElement('button');
     elt.classList = 'toggle category ' + name;
     elt.innerText = name;
-    elt.onclick = function () { addKeyword(name); }
+    elt.onclick = function () { setActiveCategory(name); }
 
     return elt;
 }

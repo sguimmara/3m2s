@@ -3,7 +3,7 @@ import { hide } from "./states";
 import _ from "lodash";
 
 const activeCategories = new Set();
-const categoryToggles = [];
+const categoryToggles = new Map();
 let featuredCategories = [];
 
 /**
@@ -45,7 +45,7 @@ function setFeaturedCategories(categories) {
     resetButton.onclick = function () {
         activeCategories.clear();
 
-        for (const elt of categoryToggles) {
+        for (const elt of categoryToggles.values()) {
             elt.classList.remove('category-active');
         }
 
@@ -55,7 +55,7 @@ function setFeaturedCategories(categories) {
     for (const cat of categories) {
         // <button class="categorie café">café</button>
         const elt = document.createElement('button');
-        categoryToggles.push(elt);
+        categoryToggles.set(cat, elt);
         elt.classList = 'toggle category ' + cat;
         elt.innerText = cat;
         elt.onclick = function () {
@@ -187,7 +187,17 @@ function addKeyword(keyword) {
     }
 }
 
+function setActiveCategory(category) {
+    [...categoryToggles.values()].forEach(elt => elt.classList.remove('category-active'));
+
+    activeCategories.clear();
+    activeCategories.add(category);
+    categoryToggles.get(category).classList.add('category-active');
+    updateFeatures();
+}
+
 export {
+    setActiveCategory,
     getFeaturedCategories,
     initSearch,
     setSearchQuery,
