@@ -23,35 +23,40 @@
 
       <!-- Recherche -->
       <div class="position-absolute top-0 end-0 w-100" style="pointer-events:none;">
-        <div class="search" style="pointer-events: auto;">
+        <div style="pointer-events: auto;">
           <div class="title"><img
             src="/images/titre.svg"
             alt=""></div>
-          <input
-          id="search-bar"
-          type="search"
-          class="rounded-pill form-control"
-          placeholder="Rechercher..."
-          aria-label="Search"
-          />
-          <!-- Liste des catégories -->
-          <div class="my-1" id="search-category-list">
-            <button id="reset-categories" class="reset-button"><img
-              src="images/icon-reset.svg"></button>
+          <!-- Barre de recherche -->
+          <div class="search-bar">
+            <input
+              id="search-bar"
+              type="search"
+              class="rounded-pill form-control search-bar-input"
+              placeholder="Rechercher..."
+              aria-label="Search"
+            />
+            <button id="reset-categories" class="reset-button"><img src="images/icon-reset.svg"></button>
+          </div>
+            <!-- Liste des catégories -->
+          <div class="category-list hstack py-2" id="search-category-list">
+
           </div>
         </div>
       </div>
 
       <!-- Boutons de navigation -->
       <div class="position-absolute bottom-0 end-0 btn-nav">
-        <div class="row">
-          <button id="btn-zoom-in" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/zoom-in.svg"></button>
+        <div id="optional-buttons">
+          <div class="row">
+            <button id="btn-zoom-in" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/plus-lg.svg"></button>
+          </div>
+          <div class="row">
+            <button id="btn-zoom-out" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/dash-lg.svg"></button>
+          </div>
         </div>
-        <div class="row">
-          <button id="btn-zoom-out" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/zoom-out.svg"></button>
-        </div>
-        <div class="row">
-          <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/house.svg"></button>
+          <div class="row">
+          <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/house-fill.svg"></button>
         </div>
       </div>
 

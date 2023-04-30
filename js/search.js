@@ -7,14 +7,14 @@ const categoryToggles = new Map();
 let featuredCategories = [];
 
 /**
+ * @type {HTMLInputElement}
+ */
+const searchBar = document.getElementById('search-bar');
+
+/**
  * @type {Array<Feature>}
  */
 let searchedFeatures;
-
-/**
- * @type {HTMLInputElement}
- */
-let searchBar;
 
 /**
  * @type {string}
@@ -44,6 +44,8 @@ function setFeaturedCategories(categories) {
     featuredCategories = categories;
     resetButton.onclick = function () {
         activeCategories.clear();
+        searchKeywords = [];
+        searchBar.value = '';
 
         for (const elt of categoryToggles.values()) {
             elt.classList.remove('category-active');
@@ -106,7 +108,6 @@ function matchesKeywords(feature, keywords) {
  * @param {Array<Feature>} features
  */
 function initSearch(features) {
-    searchBar = document.getElementById('search-bar');
     searchBar.oninput = function () {
         setSearchQuery(searchBar.value);
     }

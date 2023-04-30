@@ -9,10 +9,20 @@
   height: 100%;
 }
 
-.search {
-  width: 41rem;
+.search-bar {
+  width: 40rem;
+  height: 30pt;
+  display: flex;
   max-width: 100%;
-  padding: 1rem;
+  border-width: 1px;
+  border-color: rgb(202, 202, 202);
+  /* padding: 5pt; */
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.search-bar-input {
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .title {
@@ -45,9 +55,8 @@
 .btn-round {
   margin-top: 10pt;
   margin-bottom: 10pt;
-  border-width: 1px;
-  border-style: solid;
-  border-color: gray;
+  border-width: 0px;
+  border-style: hidden;
   background-color: white;
   border-radius: 100%;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
@@ -201,46 +210,56 @@
 
 /* Catégories */
 
-.reset-button {
-  width: 1.8rem;
-  height: 1.8rem;
-  color: #FFF;
-  text-align: center;
-  font-size: 0.7rem;
-  font-weight: bold;
-  border-radius: 1rem;
-  margin-right: 0.5rem;
-  border-width: 1px;
-  border-style: solid;
-  border-color: transparent;
-  background-color: #a0a0a0;
-}
-
 .reset-button img {
   width: 15px;
   height: 15px;
 }
 
-.reset-button:hover {
-  filter: brightness(120%);
+.category-list {
+  overflow-x:auto;
+  margin-left: 1rem;
+  padding-top: 5pt;
+  padding-bottom: 5pt;
 }
 
-.category-list {
-  overflow-x: scroll;
+.reset-button {
+  height: 30pt;
+  width: 30pt;
+  background-color: #005392;
+  color: white;
+  border-radius: 100%;
+  /* padding-left: 1rem;
+  padding-right: 1rem; */
+  margin-left: 0.5rem;
+  text-align: center;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  #optional-buttons {
+    visibility: hidden;
+  }
+}
+
+.reset-button:hover {
+  filter: brightness(120%);
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
 }
 
 .category {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
   border-radius: 1rem;
-  height: 1.8rem;
   text-align: center;
   font-weight: bold;
+  font-size: smaller;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-right: 0.5rem;
-  background-color: #AFAFAF;
   color: white;
-  margin-top: 0.5rem;
   font-family: 'Roboto Condensed';
   text-shadow: 2px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
   border: 3px solid rgba(255, 255, 255, 0);
