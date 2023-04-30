@@ -1,9 +1,10 @@
 @font-face {
-	font-family: 'Letters for Learners';
-	src: url(‘/font/LettersforLearners.woff2’) format(‘woff2’),
-		url(‘/font/Letters-for-Learners.ttf’) format(‘truetype’)
+  font-family: 'Letters for Learners';
+  src: url(/font/LettersforLearners.woff2) format(woff2),
+    url(/font/Letters-for-Learners.ttf) format(truetype)
+}
 
-  }
+
 
 .map {
   width: 100%;
@@ -59,30 +60,48 @@
   overflow-wrap: break-word;
 }
 
-.feature-date {
-  font-size: smaller;
-  color: gray;
-  font-weight: 400;
-  margin-left: 1rem;
-}
 
 .feature-day {
   font-size: smaller;
-  color: gray;
-  font-weight: 400;
-  margin-left: 1rem;
+  color: #000;
+  margin-left: 0.2rem;
   font-family: 'Letters for Learners';
+  font-size: 2.2rem;
 }
 
+.feature-date {
+  font-size: smaller;
+  color: #000;
+  font-weight: 400;
+  margin-left: 1rem;
+  font-family: 'Roboto condensed';
+  font-size: 1.2rem;
+}
 
 
 .info-desc {
   font-size: medium;
+  font-family: 'Roboto condensed';
 }
 
-.btn-post {
+.bouton-post {
+  color : #FFF;
   margin-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.3rem;
+  padding-bottom: 0.3rem;
   border-radius: 1.5rem !important;
+  background-color: #FF6E6E;
+  font-family: 'Roboto condensed';
+  font-size: 1.2rem;
+  text-decoration: none;
+  
+}
+
+.bouton-post:hover {
+  filter: brightness(150%);
+  
 }
 
 /* Catégories */
