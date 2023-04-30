@@ -94,7 +94,12 @@ function matchesKeywords(feature, keywords) {
 /**
  * @param {Array<Feature>} features
  */
-function setSearchedFeatures(features) {
+function initSearch(features) {
+    searchBar = document.getElementById('search-bar');
+    searchBar.oninput = function () {
+        setSearchQuery(searchBar.value);
+    }
+
     searchedFeatures = features;
 }
 
@@ -176,16 +181,8 @@ function addKeyword(keyword) {
     }
 }
 
-function init() {
-    searchBar = document.getElementById('search-bar');
-    searchBar.oninput = function () {
-        setSearchQuery(searchBar.value);
-    }
-}
-
 export {
-    init,
-    setSearchedFeatures,
+    initSearch,
     setSearchQuery,
     setFeaturedCategories,
     addKeyword,

@@ -1,5 +1,3 @@
-import _ from 'lodash';
-
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
 import { easeOut } from 'ol/easing.js';
@@ -10,7 +8,7 @@ import VectorLayer from 'ol/layer/Vector';
 import { hideCard, showCard } from './card';
 import { loadGeoJSON, loadBasemaps } from './layers';
 import { highlight, select } from './states';
-import { init, setFeaturedCategories, setSearchQuery, setSearchedFeatures } from './search';
+import { initSearch, setFeaturedCategories } from './search';
 
 const baseLayers = loadBasemaps();
 
@@ -26,17 +24,6 @@ const map = new Map({
     }),
 });
 
-function collectAllCategories(features) {
-    const set = new Set();
-    for (const f of features) {
-        for (const tag of f.get('categories')) {
-            set.add(tag);
-        }
-    }
-
-    return [...set];
-}
-
 /**
  * @type {VectorLayer}
  */
@@ -47,14 +34,10 @@ loadGeoJSON('/data/features.geojson').then(layer => {
     featureLayer = layer;
     const allFeatures = layer.getSource().getFeatures();
 
-    setSearchedFeatures(allFeatures);
+    initSearch(allFeatures);
 
     setFeaturedCategories(['nourriture', 'voyage', 'quotidien','culture', 'sortie','balade','anecdote']);
 });
-// loadCities('/cities.geojson')
-//     .then(features => {
-//         map.addLayer(features);
-//     });
 
 map.on('pointermove', (evt) => {
     if  (!featureLayer) {
@@ -106,5 +89,3 @@ map.on('click', (evt) => {
         });
     }
 });
-
-init();

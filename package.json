@@ -2,7 +2,6 @@
   "name": "3m2s",
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "lodash": "^4.17.21",
     "ol": "7.3.0",
     "proj4": "^2.9.0"
   },
