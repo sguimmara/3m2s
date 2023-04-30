@@ -4,10 +4,19 @@
 }
 
 .search {
+  width: 40rem;
   margin-right: 1rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
   margin-left: 3rem;
+
+}
+
+.title {
+  width: 536px;
+  height: 59px;
+  background-image: url(public/images/titre.svg);
+
 }
 
 .btn {
@@ -70,10 +79,8 @@
     text-align: center;
     font-size: x-small;
     font-weight: bold;
-    padding-left: 0.5rem;
-    padding-right: 0.5rem;
-    padding-top: 0.2rem;
-    padding-bottom: 0.2rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
     margin-right: 0.5rem;
     border-width: 1px;
     border-style: solid;
@@ -99,7 +106,7 @@
 
 .nourriture {
   background-color: #FEEA00;
-  color : #FFF;
+  text-shadow:1px 0 0 #000,0 1px 0 #000,-1px 0 0 #000,0 -1px 0 #000;
   
 }
 

@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Trois mois, deux saisons - Carte interactive</title>
+    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
     <link rel="stylesheet" href="node_modules/ol/ol.css" />
     <link rel="stylesheet" href="theme.css" />
     <link
@@ -17,10 +18,11 @@
     <div class="position-relative vh-100 vw-100">
       <!-- Carte interactive -->
       <div id="map" class="map position-absolute top-0 end-0"></div>
-
+<div class="title">test</div>
       <!-- Recherche -->
       <div class="w-100 position-absolute top-0 end-0">
         <div class="search">
+          <div class="title"></div>
           <input
           oninput="search(this.value)"
           type="search"
@@ -29,7 +31,7 @@
           aria-label="Search"
           />
           <!-- Liste des catégories -->
-          <div id="search-category-list">
+          <div class="my-1" id="search-category-list">
             <button id="reset-categories" class="reset-button">*</button>
           </div>
         </div>
