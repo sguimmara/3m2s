@@ -5,7 +5,7 @@ import { fromLonLat } from 'ol/proj';
 import VectorLayer from 'ol/layer/Vector';
 
 import { hideCard, showCard } from './card';
-import { loadGeoJSON, loadBasemaps } from './layers';
+import { loadFeatures, loadBasemaps } from './layers';
 import { highlight, select } from './states';
 import { initSearch, setFeaturedCategories } from './search';
 import { goTo, initNavigation } from './navigation';
@@ -30,7 +30,7 @@ const map = new Map({
  */
 let featureLayer;
 
-loadGeoJSON('/data/features.geojson').then(layer => {
+loadFeatures('/data/features.geojson').then(layer => {
     map.addLayer(layer);
     featureLayer = layer;
     const allFeatures = layer.getSource().getFeatures();

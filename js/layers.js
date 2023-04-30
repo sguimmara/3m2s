@@ -61,27 +61,6 @@ function loadBasemaps() {
     return [watercolor, osm, labels, clipLayer];
 }
 
-async function loadCities(url) {
-    const res = await fetch(url);
-    const json = await res.json();
-
-    const format = new GeoJSON({
-        featureProjection: 'EPSG:3857'
-    });
-
-    const features = format.readFeatures(json);
-
-    const layer = new VectorLayer({
-        source: new VectorSource({
-            attributions: 'Morgane Hamon',
-            features,
-        }),
-        style: f => styles.city(f.get('name'))
-    });
-
-    return layer;
-}
-
 /**
  * @param {Feature} feature
  */
@@ -109,11 +88,11 @@ function validate(feature) {
 }
 
 /**
- * Loads a GeoJSON and returns the created layer.
+ * Loads the features and returns the created layer.
  * @param {string} url The URL to the GeoJSON file.
  * @returns {VectorLayer} The created vector layer.
  */
-async function loadGeoJSON(url, defaultState = 'default') {
+async function loadFeatures(url, defaultState = 'default') {
     const res = await fetch(url);
     const json = await res.json();
 
@@ -140,7 +119,6 @@ async function loadGeoJSON(url, defaultState = 'default') {
 }
 
 export {
-    loadGeoJSON,
+    loadFeatures,
     loadBasemaps,
-    loadCities,
 }
