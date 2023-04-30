@@ -62,24 +62,25 @@
 
       <!-- Encart du jour -->
       <div
-        class="position-absolute bottom-0 start-50 translate-middle-x card-container"
+        class="position-absolute card-container"
         style="pointer-events: none;"
       >
         <div id="card" class="info">
           <button id="btn-close" class="position-absolute end-0 top-0 m-3 btn-close"></button>
           <h5><span id="day" class="feature-day">Jour 1</span> <span id="date" class="feature-date">Jour 1</span></h5>
           <div id="feature-tags"><button class="category nourriture">nourriture</button><button class="category voyage">voyage</button><button class="category quotidien">quotidien</button></div>
-          <div class="row row-auto my-3">
+          <div class="row row-cols-2 my-3">
             <div class="col-auto">
               <img id="thumbnail" class="preview">
             </div>
-            <div class="col">
+            <div class="col-7">
               <p id="feature-description" class="info-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-              <div>
-                <a id="card-link" href="#" target="_blank"><button class="bouton-post"><span>Voir le post </span></button></a>
-              </div>
             </div>
-
+          </div>
+          <div class="row row-cols-2">
+            <div>
+              <a id="card-link" href="#" target="_blank"><button class="bouton-post"><span>Voir le post </span></button></a>
+            </div>
           </div>
 
         </div>
