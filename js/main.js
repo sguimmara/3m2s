@@ -105,6 +105,7 @@ map.on('click', (evt) => {
             date: selected.get('date'),
             tags: selected.get('categories'),
             description: selected.get('description'),
+            thumbnailUrl: 'https://images.newindianexpress.com/uploads/user/imagelibrary/2017/8/4/original/fapf22.jpg'
         });
     }
 });
