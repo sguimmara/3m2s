@@ -67,7 +67,7 @@
     width: 30rem;
     max-width: 100%;
     max-height: 40%;
-    margin-bottom: 1rem;
+    margin-bottom: 4rem;
     bottom: 0;
     left: 50% !important;
     transform: translateX(-50%) !important;
@@ -150,7 +150,6 @@
   overflow-wrap: break-word;
 }
 
-
 .feature-day {
   font-size: smaller;
   color: #000;
@@ -167,7 +166,6 @@
   font-family: 'Roboto condensed';
   font-size: 1.2rem;
 }
-
 
 .info-desc {
   font-size: medium;
@@ -217,8 +215,6 @@
   right: 0;
 }
 
-
-
 /* Catégories */
 
 .reset-button img {
@@ -253,28 +249,13 @@
   transition: all 0.75s 0.25s;
 }
 
-
-
 .reset-button:hover {
   filter: brightness(150%);
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
-  
 }
-
-
-
-/*.toggle-down {
-  transform: rotate(0deg);
-}
-
-
-.toggle-up {
-  transform: rotate(180deg);
-}*/
-
 
 .category {
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
