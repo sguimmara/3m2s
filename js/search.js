@@ -50,6 +50,16 @@ function setFeaturedCategories(categories) {
         for (const elt of categoryToggles.values()) {
             elt.classList.remove('category-active');
         }
+        // const upClass = 'toggle-up';
+        // const downClass = 'toggle-down';
+
+        // if (resetButton.classList.contains(downClass)) {
+        //     resetButton.classList.remove(downClass);
+        //     resetButton.classList.add(upClass);
+        // } else {
+        //     resetButton.classList.add(downClass);
+        //     resetButton.classList.remove(upClass);
+        // }
 
         updateFeatures();
     }
