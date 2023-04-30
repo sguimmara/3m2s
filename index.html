@@ -42,26 +42,26 @@
       </div>
 
       <!-- Boutons de navigation -->
-      <div class="position-absolute bottom-0 end-0 p-4">
-        <div class="row btn-row">
+      <div class="position-absolute bottom-0 end-0 btn-nav ">
+        <div class="row">
           <button id="btn-zoom-in" class="btn-round"><img src="/icons-bootstrap/zoom-in.svg"></button>
         </div>
-        <div class="row btn-row">
+        <div class="row">
           <button id="btn-zoom-out" class="btn-round"><img src="/icons-bootstrap/zoom-out.svg"></button>
         </div>
-        <div class="row btn-row">
+        <div class="row">
           <button id="btn-home" class="btn-round"><img src="/icons-bootstrap/house.svg"></button>
         </div>
       </div>
 
       <!-- Encart du jour -->
       <div
-        class="position-absolute start-50 top-50 translate-middle-x p-4 "
+        class="position-absolute bottom-0 start-50 translate-middle-x card-container"
         style="pointer-events: none;"
       >
         <div id="card" class="info">
           <h5><span id="day" class="feature-day">Jour 1</span> <span id="date" class="feature-date">Jour 1</span></h5>
-          <div id="feature-tags"><span class="category nourriture">nourriture</span><span class="category musée">musée</span><span class="category voyage">voyage</span><span class="category aéroport">aéroport</span></div>
+          <div id="feature-tags"><button class="category nourriture">nourriture</button><button class="category musée">musée</button><button class="category voyage">voyage</button><button class="category aéroport">aéroport</button></div>
           <div class="row my-3">
             <div class="col-auto">
               <img id="thumbnail" class="preview">
@@ -72,9 +72,9 @@
                 <a id="card-link" href="#" target="_blank"><button class="bouton-post"><span>Voir le post </span></button></a>
               </div>
             </div>
-            
+
           </div>
-          
+
         </div>
       </div>
     </div>

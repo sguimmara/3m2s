@@ -35,11 +35,12 @@
     height: 20rem;
     max-width: 100%;
     max-height: 40%;
-    padding: 5pt;
+    margin-bottom: 1rem;
 }
 
-.btn-row {
-  margin: 10pt;
+.btn-nav {
+  margin-left: 10pt;
+  margin-right: 10pt;
 }
 
 .btn-round {
@@ -48,6 +49,7 @@
   border-color: gray;
   background-color: white;
   border-radius: 100%;
+  margin: 5pt;
   width: 40pt !important;
   height: 40pt !important;
 }
