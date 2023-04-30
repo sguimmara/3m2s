@@ -4,8 +4,6 @@
     url(/font/Letters-for-Learners.ttf) format(truetype)
 }
 
-
-
 .map {
   width: 100%;
   height: 100%;
@@ -108,12 +106,12 @@
   font-family: 'Roboto condensed';
   font-size: 1.2rem;
   text-decoration: none;
-  
+
 }
 
 .bouton-post:hover {
   filter: brightness(150%);
-  
+
 }
 
 /* Catégories */
