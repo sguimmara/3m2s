@@ -14,9 +14,8 @@
 }
 
 .title {
-  width: 536px;
-  height: 59px;
-  background-image: url(/images/titre.svg);
+  width: 500px;
+  max-width:100%;
 
 }
 
