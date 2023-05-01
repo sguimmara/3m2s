@@ -9,6 +9,27 @@
   height: 100%;
 }
 
+.card-bienvenue {
+
+  font-size: smaller;
+  color: #000;
+  font-weight: 400;
+  margin-left: 1rem;
+  font-family: 'Roboto condensed';
+  font-size: 1.2rem;
+
+}
+
+p.titre-bienvenue {
+
+  color: #000;
+  font-family: 'Letters for Learners';
+  font-size: 1.5rem;
+  text-align: center !important; 
+
+}
+
+
 .header-container {
   padding-left: 1rem;
   padding-right: 1rem;
