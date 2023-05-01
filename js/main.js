@@ -91,6 +91,7 @@ map.on('click', (evt) => {
     }
 
     hideCard();
+    select(orderedFeatures, false);
 
     const picked = map.getFeaturesAtPixel(evt.pixel);
 
