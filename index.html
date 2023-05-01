@@ -74,12 +74,34 @@
           </div>
           <div class="modal-body">...</div>
           <div class="modal-footer">
-            © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>, <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien Guimmara</a></span> <span>Fonds de carte: <a href="http://maps.stamen.com" target="_blank" class="link-primary">Stamen</a> et OpenStreetMap</span>
+            <p>
+            © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>, <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien Guimmara</a></span>
+            </p>
+            <p>
+              <span>Fonds de carte: <a href="http://maps.stamen.com" target="_blank" class="link-primary">Stamen</a> et OpenStreetMap</span>
+            </p>
           </div>
         </div>
       </div>
     </div>
 
+    <!-- Bienvenue -->
+    <div  class="modal fade" id="welcome" tabindex="-1" aria-labelledby="welcomeLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="welcomeLabel">Trois mois, deux saisons - la carte interactive</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Bienvenue Lorem ipsum
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Voir la carte</button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Encart du jour -->
     <div class="position-absolute card-container" style="pointer-events: none">
       <div id="card" class="info">
@@ -120,6 +142,12 @@
     integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
     crossorigin="anonymous"></script>
   <script type="module" src="js/main.js"></script>
+  <script type="text/javascript">
+    window.onload = () => {
+      const myModal = new bootstrap.Modal('#welcome');
+      myModal.show();
+    }
+</script>
 </body>
 
 </html>
