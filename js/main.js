@@ -11,6 +11,7 @@ import { initSearch, setFeaturedCategories } from './search';
 import { goTo, initNavigation } from './navigation';
 
 const baseLayers = loadBasemaps();
+let orderedFeatures;
 
 const map = new Map({
     layers: baseLayers,
@@ -33,9 +34,10 @@ let featureLayer;
 loadFeatures('/data/features.geojson').then(layer => {
     map.addLayer(layer);
     featureLayer = layer;
-    const allFeatures = layer.getSource().getFeatures();
+    orderedFeatures = layer.getSource().getFeatures();
+    orderedFeatures.sort((a, b) => a.get('day') - b.get('day'));
 
-    initSearch(allFeatures);
+    initSearch(orderedFeatures);
 
     setFeaturedCategories(['nourriture', 'voyage', 'quotidien','culture', 'sortie','balade','anecdote']);
 
@@ -46,8 +48,7 @@ map.on('pointermove', (evt) => {
     if  (!featureLayer) {
         return;
     }
-    const features = featureLayer.getSource().getFeatures();
-    highlight(features, false);
+    highlight(orderedFeatures, false);
     const picked = map.getFeaturesAtPixel(evt.pixel);
     if (picked.length > 0) {
         const f = picked[0];
@@ -58,6 +59,32 @@ map.on('pointermove', (evt) => {
     }
 });
 
+function selectFeature(feature) {
+    select(orderedFeatures, false);
+    select(feature, true);
+
+    setTimeout(() => goTo(feature), 5);
+
+    /** @type {Array<Feature>} */
+    const index = orderedFeatures.indexOf(feature);
+    const previous = index > 0 ? orderedFeatures[index - 1] : undefined;
+    const next = index < orderedFeatures.length - 1 ? orderedFeatures[index + 1] : undefined;
+
+    const onNext = function() { selectFeature(next) };
+    const onPrevious = function() { selectFeature(previous) };
+
+    showCard({
+        title: `jour ${feature.get('day')}`,
+        url: feature.get('url'),
+        date: feature.get('date'),
+        tags: feature.get('categories'),
+        description: feature.get('description'),
+        thumbnailUrl: feature.get('thumbnailUrl'),
+        onNext,
+        onPrevious
+    });
+}
+
 map.on('click', (evt) => {
     if  (!featureLayer) {
         return;
@@ -65,22 +92,10 @@ map.on('click', (evt) => {
 
     hideCard();
 
-    const features = featureLayer.getSource().getFeatures();
-    select(features, false);
     const picked = map.getFeaturesAtPixel(evt.pixel);
+
     if (picked.length > 0) {
         const selected = picked[0];
-        select(selected, true);
-
-        setTimeout(() => goTo(selected), 5);
-
-        showCard({
-            title: `jour ${selected.get('day')}`,
-            url: selected.get('url'),
-            date: selected.get('date'),
-            tags: selected.get('categories'),
-            description: selected.get('description'),
-            thumbnailUrl: selected.get('thumbnailUrl')
-        });
+        selectFeature(selected);
     }
 });

@@ -716,7 +716,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.7454543536111, 335.658719948224615]
+        "coordinates": [139.7454543536111, 35.658719948224615]
       },
       "properties": {
         "day": 48,

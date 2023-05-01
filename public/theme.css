@@ -49,10 +49,8 @@ p.titre-bienvenue {
 }
 
 .title {
-  /* width: 100px; */
-  /* /* height: 50px !important; */
-  width:100% !important;
-  /* max-width: 70% !important; */
+  width: 500px;
+  max-width:100%;
 }
 
 .btn {

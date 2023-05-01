@@ -2,6 +2,8 @@ const cardElement = document.getElementById('card');
 const dayElement = document.getElementById('day');
 const dateElement = document.getElementById('date');
 const linkElement = document.getElementById('card-link');
+const previousBtn = document.getElementById('previous-feature');
+const nextBtn = document.getElementById('next-feature');
 const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
@@ -47,12 +49,17 @@ function showCard({
     url,
     thumbnailUrl,
     description,
+    onPrevious,
+    onNext,
 }) {
     cardElement.style.display = 'block';
     dayElement.innerText = title;
     dateElement.innerText = formatDate(date);
     descriptionElement.innerText = description;
     closeButton.onclick = function () { hideCard(); };
+
+    previousBtn.onclick = onPrevious;
+    nextBtn.onclick = onNext;
 
     thumbnailElt.src = thumbnailUrl;
 
