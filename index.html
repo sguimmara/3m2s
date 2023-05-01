@@ -1,99 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Trois mois, deux saisons - Carte interactive</title>
-    <link href='https://fonts.googleapis.com/css?family=Roboto Condensed' rel='stylesheet'>
-    <link rel="stylesheet" href="node_modules/ol/ol.css" />
-    <link rel="stylesheet" href="/theme.css" />
-    <link rel="stylesheet" href="/font.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="position-relative vh-100 vw-100">
 
-      <!-- Carte interactive -->
-      <div id="map" class="map position-absolute top-0 end-0"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Trois mois, deux saisons - Carte interactive</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto Condensed" rel="stylesheet" />
+  <link rel="stylesheet" href="node_modules/ol/ol.css" />
+  <link rel="stylesheet" href="/theme.css" />
+  <link rel="stylesheet" href="/font.css" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous" />
+</head>
 
-      <!-- Recherche -->
-      <div class="position-absolute top-0 end-0 w-100" style="pointer-events:none;">
-        <div style="pointer-events: auto;">
-          <div class="title"><img
-            src="/images/titre.svg"
-            alt=""></div>
-          <!-- Barre de recherche -->
-          <div class="search-bar">
-            <input
-              id="search-bar"
-              type="search"
-              class="rounded-pill form-control search-bar-input"
-              placeholder="Rechercher..."
-              aria-label="Search"
-            />
-            <button id="reset-categories" class="reset-button toggle-up" ><img src="images/icon-reset.svg"></button>
-          </div>
-            <!-- Liste des catégories -->
-          <div class="category-list hstack py-2" id="search-category-list">
+<body>
+  <div class="position-relative vh-100 vw-100">
+    <!-- Carte interactive -->
+    <div id="map" class="map position-absolute top-0 end-0"></div>
 
-          </div>
+    <!-- Recherche -->
+    <div class="position-absolute top-0 end-0 w-100" style="pointer-events: none">
+      <div style="pointer-events: auto">
+        <div class="title"><img src="/images/titre.svg" alt="" /></div>
+        <!-- Barre de recherche -->
+        <div class="search-bar">
+          <input id="search-bar" type="search" class="rounded-pill form-control search-bar-input"
+            placeholder="Rechercher..." aria-label="Search" />
+          <button id="reset-categories" class="reset-button toggle-up">
+            <img src="images/icon-reset.svg" />
+          </button>
+        </div>
+        <!-- Liste des catégories -->
+        <div class="category-list hstack py-2" id="search-category-list"></div>
+      </div>
+    </div>
+
+    <!-- Boutons de navigation -->
+    <div class="position-absolute bottom-0 end-0 btn-nav">
+      <div id="optional-buttons">
+        <div class="row">
+          <button id="btn-zoom-in" class="btn-round">
+            <img width="20px" height="20px" src="/icons-bootstrap/plus-lg.svg" />
+          </button>
+        </div>
+        <div class="row">
+          <button id="btn-zoom-out" class="btn-round">
+            <img width="20px" height="20px" src="/icons-bootstrap/dash-lg.svg" />
+          </button>
         </div>
       </div>
-
-      <!-- Boutons de navigation -->
-      <div class="position-absolute bottom-0 end-0 btn-nav">
-        <div id="optional-buttons">
-          <div class="row">
-            <button id="btn-zoom-in" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/plus-lg.svg"></button>
-          </div>
-          <div class="row">
-            <button id="btn-zoom-out" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/dash-lg.svg"></button>
-          </div>
-        </div>
-          <div class="row">
-          <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/icons-bootstrap/house-fill.svg"></button>
-        </div>
+      <div class="row">
+        <button id="btn-info" class="btn-round" data-bs-toggle="modal" data-bs-target="#about">
+          <img width="20px" height="20px" src="/icons-bootstrap/info-circle-fill.svg" />
+        </button>
       </div>
+      <div class="row">
+        <button id="btn-home" class="btn-round">
+          <img width="20px" height="20px" src="/icons-bootstrap/house-fill.svg" />
+        </button>
+      </div>
+    </div>
 
-      <!-- Encart du jour -->
-      <div
-        class="position-absolute card-container"
-        style="pointer-events: none;"
-      >
-        <div id="card" class="info">
-          <button id="btn-close" class="position-absolute end-0 top-0 m-3 btn-close"></button>
-          <h5><span id="day" class="feature-day">Jour 1</span> <span id="date" class="feature-date">Jour 1</span></h5>
-          <div id="feature-tags"><button class="category nourriture">nourriture</button><button class="category voyage">voyage</button><button class="category quotidien">quotidien</button></div>
-          <div class="row row-cols-2 my-3">
-            <div class="col-auto">
-              <img id="thumbnail" class="preview">
-            </div>
-            <div class="col-7">
-              <p id="feature-description" class="info-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
+    <!-- A propos -->
+    <div class="position-absolute start-50 top-50 translate-middle modal fade" id="about" tabindex="-1"
+      aria-labelledby="aboutTitle" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="aboutTitle">
+              Modal title
+            </h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="row row-cols-2">
-            <div>
-              <a id="card-link" href="#" target="_blank"><button class="bouton-post"><span>Voir le post </span></button></a>
-            </div>
+          <div class="modal-body">...</div>
+          <div class="modal-footer">
+            © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>, <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien Guimmara</a></span> <span>Fonds de carte: <a href="http://maps.stamen.com" target="_blank" class="link-primary">Stamen</a> et OpenStreetMap</span>
           </div>
-
         </div>
       </div>
     </div>
 
-    <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
-    <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
-      crossorigin="anonymous"
-    ></script>
-    <script type="module" src="js/main.js"></script>
-  </body>
+    <!-- Encart du jour -->
+    <div class="position-absolute card-container" style="pointer-events: none">
+      <div id="card" class="info">
+        <button id="btn-close" class="position-absolute end-0 top-0 m-3 btn-close"></button>
+        <h5>
+          <span id="day" class="feature-day">Jour 1</span>
+          <span id="date" class="feature-date">Jour 1</span>
+        </h5>
+        <div id="feature-tags">
+          <button class="category nourriture">nourriture</button><button class="category voyage">voyage</button><button
+            class="category quotidien">quotidien</button>
+        </div>
+        <div class="row row-cols-2 my-3">
+          <div class="col-auto">
+            <img id="thumbnail" class="preview" />
+          </div>
+          <div class="col-7">
+            <p id="feature-description" class="info-desc">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+          </div>
+        </div>
+        <div class="row row-cols-2">
+          <div>
+            <a id="card-link" href="#" target="_blank"><button class="bouton-post">
+                <span>Voir le post </span>
+              </button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pointer events polyfill for old browsers, see https://caniuse.com/#feat=pointer -->
+  <script src="https://cdn.jsdelivr.net/npm/elm-pep@1.0.6/dist/elm-pep.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+
 </html>

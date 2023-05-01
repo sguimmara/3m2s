@@ -73,6 +73,15 @@
   }
 }
 
+.about-container {
+  width: 50rem;
+  height: 40rem;
+  max-width: 90%;
+  max-height: 90%;
+  background-color: white;
+  border-radius: 10pt;
+}
+
 .info {
   display: none;
   background-color: white;
