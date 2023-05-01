@@ -47,11 +47,26 @@
   margin-bottom: 10pt;
   border-width: 0px;
   border-style: hidden;
-  background-color: white;
+  background-color: #FFFFFF;
   border-radius: 100%;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
   width: 40pt !important;
   height: 40pt !important;
+  transition: all 0.75s 0.1s;
+}
+
+.btn-round:hover {
+
+background-color: #005392;
+transition: 0.2s;
+
+}
+
+.btn-round:active {
+  background-color: #03406e;
+  box-shadow: 0px 0px 0px #00000069;
+  transform: translateY(5px);
+  transition: 0.2s;
 }
 
 @media screen and (width <= 600px) {
@@ -261,6 +276,8 @@
   font-weight: bold;
   border : none;
   transition: all 0.75s 0.25s;
+  box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
+
 }
 
 .reset-button:hover {
@@ -268,7 +285,15 @@
   cursor: pointer;
   display: inline-block;
   position: relative;
-  transition: 0.5s;
+  transition: 0.2s;
+}
+
+.reset-button:active {
+
+  background-color: #03406e;
+  box-shadow: 0px 0px 0px #00000069;
+  transform: translateY(4px);
+  transition: 0.2s;
 }
 
 .category {
@@ -284,6 +309,8 @@
   font-family: 'Roboto Condensed';
   text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
   border: 3px solid rgba(255, 255, 255, 0);
+  transform: translateY(0px);
+  transition: 0.2s;
 }
 
 .category:hover {
@@ -291,12 +318,16 @@
   cursor: pointer;
   display: inline-block;
   position: relative;
-  transition: 0.5s;
+  transition: 0.2s;
 }
 
 .category-active {
   border: 3px solid rgb(255, 255, 255);
+  transform: translateY(4px);
+  transition: 0.2s;
+  
 }
+
 
 .nourriture {
   background-color: #FEEA00;
