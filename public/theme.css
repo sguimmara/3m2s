@@ -9,6 +9,11 @@
   height: 100%;
 }
 
+.header-container {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
 .search-bar {
   width: 40rem;
   height: 30pt;
@@ -16,8 +21,6 @@
   max-width: 100%;
   border-width: 1px;
   border-color: rgb(202, 202, 202);
-  padding-left: 1rem;
-  padding-right: 1rem;
 }
 
 .search-bar-input {
@@ -25,8 +28,10 @@
 }
 
 .title {
-  width: 500px;
-  max-width:100%;
+  /* width: 100px; */
+  /* /* height: 50px !important; */
+  width:100% !important;
+  /* max-width: 70% !important; */
 }
 
 .btn {
@@ -98,7 +103,7 @@ transition: 0.2s;
 }
 
 .info {
-  display: none;
+  /* display: none; */
   background-color: white;
   padding: 1rem;
   height: 100%;
@@ -208,6 +213,7 @@ transition: 0.2s;
   height: 40px;
   transition: all 0.5s;
   cursor: pointer;
+  width: 100%;
   /* margin: 5px; */
 }
 
@@ -325,7 +331,7 @@ transition: 0.2s;
   border: 3px solid rgb(255, 255, 255);
   transform: translateY(4px);
   transition: 0.2s;
-  
+
 }
 
 

@@ -18,10 +18,15 @@
     <!-- Carte interactive -->
     <div id="map" class="map position-absolute top-0 end-0"></div>
 
-    <!-- Recherche -->
+    <!-- Haut de page -->
     <div class="position-absolute top-0 end-0 w-100" style="pointer-events: none">
-      <div style="pointer-events: auto">
-        <div class="title"><img src="/images/titre.svg" alt="" /></div>
+      <div class="header-container" style="pointer-events: auto">
+
+        <!-- Titre -->
+        <div class="col col-auto title">
+          <img src="/images/titre.svg" alt="" />
+        </div>
+
         <!-- Barre de recherche -->
         <div class="search-bar">
           <input id="search-bar" type="search" class="rounded-pill form-control search-bar-input"
@@ -30,6 +35,7 @@
             <img src="images/icon-reset.svg" />
           </button>
         </div>
+
         <!-- Liste des catégories -->
         <div class="category-list hstack py-2" id="search-category-list"></div>
       </div>
@@ -39,25 +45,25 @@
     <div class="position-absolute bottom-0 end-0 btn-nav">
       <div id="optional-buttons">
         <div class="row">
-          <button id="btn-zoom-in" class="btn-round"><img width="20px" height="20px" src="/images/icon-plus.svg"></button>
+          <button id="btn-zoom-in" class="btn-round"><img width="20px" height="20px"
+              src="/images/icon-plus.svg"></button>
         </div>
         <div class="row">
-          <button id="btn-zoom-out" class="btn-round"><img width="20px" height="20px" src="/images/icon-moins.svg"></button>
+          <button id="btn-zoom-out" class="btn-round"><img width="20px" height="20px"
+              src="/images/icon-moins.svg"></button>
         </div>
+      </div>
+      <div class="row">
+        <button id="btn-home" class="btn-round"><img width="20px" height="20px" data-bs-toggle="modal"
+            data-bs-target="#about" src="/icons-bootstrap/info-circle-fill.svg"></button>
       </div>
       <div class="row">
         <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/images/icon-house.svg"></button>
       </div>
-      <div class="row">
-        <button id="btn-home" class="btn-round">
-          <img width="20px" height="20px" src="/icons-bootstrap/house-fill.svg" />
-        </button>
-      </div>
     </div>
 
     <!-- A propos -->
-    <div class="position-absolute start-50 top-50 translate-middle modal fade" id="about" tabindex="-1"
-      aria-labelledby="aboutTitle" aria-hidden="true">
+    <div class="modal fade" id="about" tabindex="-1" aria-labelledby="aboutTitle" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
@@ -69,10 +75,13 @@
           <div class="modal-body">...</div>
           <div class="modal-footer">
             <p>
-            © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>, <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien Guimmara</a></span>
+              © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>,
+              <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien
+                  Guimmara</a></span>
             </p>
             <p>
-              <span>Fonds de carte: <a href="http://maps.stamen.com" target="_blank" class="link-primary">Stamen</a> et OpenStreetMap</span>
+              <span>Fonds de carte: <a href="http://maps.stamen.com" target="_blank" class="link-primary">Stamen</a> et
+                OpenStreetMap</span>
             </p>
           </div>
         </div>
