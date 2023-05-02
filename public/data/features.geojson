@@ -184,7 +184,7 @@
         "date": "2022-10-04",
         "url": "https://www.instagram.com/p/Cj-H8nPLW86/",
         "categories": ["culture", "musée", "sortie"],
-        "description": "Pourtant je suis HYPER patiente avec les vieilles personnes."
+        "description": "Passion prendre le train pour un oui ou pour un non."
       }
     },
     {
@@ -199,7 +199,7 @@
         "date": "2022-10-05",
         "url": "https://www.instagram.com/p/Cj7htmiLpCm/",
         "categories": ["balade", "parc", "train", "école"],
-        "description": "Passion prendre le train pour un oui ou pour un non."
+        "description": "Pourtant je suis HYPER patiente avec les vieilles personnes."
       }
     },
     {
@@ -274,7 +274,7 @@
         "date": "2022-10-10",
         "url": "https://www.instagram.com/p/CkNwnh8Lkoa/",
         "categories": ["anecdote", "quotidien"],
-        "description": "Même à Tokyo c’est plus facile de trouver une place dans le métro que dans la vie jcrois."
+        "description": "Même à Tokyo c’est plus facile de trouver une place dans le metro que dans la vie jcrois."
       }
     },
     {
@@ -289,14 +289,14 @@
         "date": "2022-10-11",
         "url": "https://www.instagram.com/p/CkSzc7GL6wx/",
         "categories": ["balade", "nourriture", "quotidien", "sanctuaire"],
-        "description": "Je n’ai jamais vécu en coloc du coup jme suis dit que commencer avec 90 personnes ça serait bien (et ça l’est en fait)"
+        "description": "Ce jour là j’ai une énième fois réalisée que la sécurité sociale c’était LA MEILLEURE CHOSE AU MONDE HEIN."
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84283644436863, 35.68860844527332]
+        "coordinates": [139.8435162620376, 35.68847912265454] 
       },
       "properties": {
         "day": 20,
@@ -304,7 +304,7 @@
         "date": "2022-10-12",
         "url": "https://www.instagram.com/p/CkQCBfWr30S/",
         "categories": ["quotidien", "anecdote", "résidence"],
-        "description": "Ce jour là j’ai une énième fois réalisée que la sécurité sociale c’était LA MEILLEURE CHOSE AU MONDE HEIN."
+        "description": "Je n’ai jamais vécu en coloc du coup jme suis dit que commencer avec 90 personnes ça serait bien (et ça l’est en fait)."
       }
     },
     {
@@ -334,7 +334,7 @@
         "date": "2022-10-14",
         "url": "https://www.instagram.com/p/CkYQjSnvZS9/",
         "categories": ["anecdote", "école"],
-        "description": "Je pense que la morale de l’histoire c’est « rentre pas trop tard chez toi sinon ta mère va s’inquiéter » "
+        "description": "Je pense que la morale de l’histoire c’est « rentre pas trop tard chez toi sinon ta mère va s’inquiéter »."
       }
     },
     {
@@ -349,7 +349,7 @@
         "date": "2022-10-15",
         "url": "https://www.instagram.com/p/CkdE9xeriD_/",
         "categories": ["résidence", "quotidien", "carnet", "travail"],
-        "description": "Une capacité à culpabiliser à toute épreuve"
+        "description": "Une capacité à culpabiliser à toute épreuve."
       }
     },
     {
@@ -394,7 +394,7 @@
         "date": "2022-10-18",
         "url": "https://www.instagram.com/p/CklNbb5L-xF/",
         "categories": ["anecdote", "quotidien", "train"],
-        "description": "Les 35min c’est hyper théorique, en réalité je mets pas loin de 50 min l’aller ..."
+        "description": "Les 35min c’est hyper théorique, en réalité je mets pas loin de 50 min l’aller (Sinon je me rends compte que c'est pas SUPER impresionnant)."
       }
     },
     {
@@ -514,14 +514,14 @@
         "date": "2022-10-26",
         "url": "https://www.instagram.com/p/ClBajhnv9aX/",
         "categories": ["sortie", "café"],
-        "description": "Ok, le mien était froid AUSSI après avoir passé 30min a hyperventiler et le photographier."
+        "description": "Ok, le mien était froid AUSSI après avoir passé 30min à hyperventiler et le photographier."
       }
     },
     {
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84281499594064, 35.690951674202644]
+        "coordinates": [139.8436951059092, 35.69071155346884] 
       },
       "properties": {
         "day": 35,
@@ -596,7 +596,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84275288735944, 35.68883706307737]
+        "coordinates": [139.8423807307535, 35.68920631502372]  
       },
       "properties": {
         "day": 40,
@@ -641,7 +641,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84298550976536, 35.69103797575522]
+        "coordinates": [139.84257384981464, 35.69078351356939] 
       },
       "properties": {
         "day": 43,
@@ -686,7 +686,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84270621738597, 35.6887595125097]
+        "coordinates": [139.8418410617649, 35.68817465234423] 
       },
       "properties": {
         "day": 46,
@@ -709,7 +709,7 @@
         "date": "2022-11-08",
         "url": "https://www.instagram.com/p/Cl56dLIr3Yo/",
         "categories": ["nourriture", "anecdote" ],
-        "description": "Quand j’ai écrit cette page je me suis dit « merde il manque des trucs » quand j’ai colorié cette page je me suis dit « merde il manque des trucs »"
+        "description": "Quand j’ai écrit cette page je me suis dit « merde il manque des trucs » quand j’ai colorié cette page je me suis dit « merde il manque des trucs »."
       }
     },
     {
@@ -844,7 +844,7 @@
         "date": "2022-11-17",
         "url": "https://www.instagram.com/p/CnFiSIwLvDs/",
         "categories": ["sortie", "anecdote"],
-        "description": "Ce sento était une petit victoire de la vie (parce que là pour sortir de ma zone de confort c'était PAS MAL)"
+        "description": "Ce sento était une petit victoire de la vie (parce que là pour sortir de ma zone de confort c'était PAS MAL)."
       }
     },
     {
@@ -926,7 +926,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [135.76120936706917, 34.990416424944854]
+        "coordinates": [135.7721482070527, 34.991846455250815]
       },
       "properties": {
         "day": 62,
@@ -986,7 +986,7 @@
           "amis",
           "sanctuaire"
         ],
-        "description": "Dernière étape : FUKUOKA. Pour mille et une raisons ça faisait longtemps que je voulais y aller, et clairement ça a été la cerise sur le gâteau : JE REVIENDRAI KYUSHU, TIENS TOI PRET."
+        "description": "Dernière étape : FUKUOKA. Pour mille et une raisons ça faisait longtemps que je voulais y aller, et clairement ça a été la cerise sur le gâteau : JE REVIENDRAI KYUSHU, TIENS TOI PRÊT."
       }
     },
     {
@@ -1091,7 +1091,7 @@
         "date": "2022-12-03",
         "url": "https://www.instagram.com/p/CosgtyyrTFo/",
         "categories": ["nourriture", "sortie", "quartier", "amis"],
-        "description": "10 francs si vous trouvez quel vêtements j'ai (honteusement) acheté (BIEN EVIDEMENT il est dessiné)."
+        "description": "10 francs si vous trouvez quel vêtement j'ai (honteusement) acheté (BIEN EVIDEMENT il est dessiné)."
       }
     },
     {
@@ -1113,7 +1113,7 @@
       "type": "Feature",
       "geometry": {
         "type": "Point",
-        "coordinates": [139.84284306100014, 35.6887796687505]
+        "coordinates": [139.8437154117204, 35.68853621070832]  
       },
       "properties": {
         "day": 74,

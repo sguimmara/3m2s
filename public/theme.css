@@ -9,6 +9,8 @@
   height: 100%;
 }
 
+/* ------- POP UP BIENVENUE ---------- */
+
 .card-bienvenue {
 
   color: #000;
@@ -22,7 +24,7 @@
 
 
 @media screen and (width <= 600px) {
-  p.titre-bienvenue {
+  p.titre-bienvenue{
     color: #000;
   font-family: 'Letters for Learners';
   font-size: 10vw;
@@ -36,6 +38,23 @@
     font-size: 3.5vw;
   }
 }
+
+@media screen and (width <= 600px) {
+  p.text-bienvenue{
+
+  font-size: 5vw;
+  margin-bottom : 3rem;
+  }
+}
+
+@media screen and (width > 600px) {
+  p.text-bienvenue {
+    color: #000;
+    font-size: 1.2rem;
+    margin-bottom : 3rem;
+  }
+}
+
 
 
 p.texte-bienvenue {
@@ -57,7 +76,7 @@ span.start {
   white-space : nowrap;
   color : white;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
   transition: all 0.5s 0.1s;
 }
@@ -85,12 +104,12 @@ span.carte {
 
   margin: 5px;
   padding:3px 14px 3px 14px;
-  background-color : #005392;
+  background-color : #12d6d6;
   border-radius: 3rem;
   white-space : nowrap;
   color : white;
   box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
   transition: all 0.5s 0.1s;
 }
@@ -104,7 +123,7 @@ cursor: pointer;
 }
 
 span.carte:active {
-  background-color: #013a66;
+  background-color: #11bbbb;
   box-shadow: 0px 0px 0px #00000069;
   transform: translateY(5px);
   transition: 0.2s;
@@ -112,6 +131,171 @@ span.carte:active {
 
   
 }
+
+/* ------- POP UP PRÉSENTATION ---------- */
+
+.card-intro {
+
+  color: #000;
+  font-weight: 400;
+  font-family: 'Roboto condensed';
+  font-size: 1rem; 
+  padding: 1.5rem;
+  text-align: justify;
+  
+
+}
+
+h1.titre-intro {
+  color: #000;
+font-family: 'Letters for Learners';
+font-size: 1.6rem !important;
+}
+
+
+p.align-left {
+  text-align: left;
+}
+
+span.link {
+
+
+  margin: 5px;
+  padding:3px 14px 3px 14px;
+  background-color : #3db5ff;
+  border-radius: 3rem;
+  white-space : nowrap;
+  color : white;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
+  transition: all 0.5s 0.1s;
+}
+
+span.link:hover {
+
+filter: brightness(120%);
+transition: 0.2s;
+cursor: pointer;
+
+}
+
+span.link:active {
+  background-color: #3090cc;
+  box-shadow: 0px 0px 0px #00000069;
+  transform: translateY(3px);
+  transition: 0.2s;
+  font-size: 0.8rem;
+
+  
+}
+
+span.link a {
+  color :rgb(255, 255, 255);
+  text-decoration: none;
+
+  
+}
+
+span.signature {
+  color :rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #ffc720 !important;
+  margin-left: 35%;
+  text-align: center !important;
+  
+}
+
+span.signature:active {
+  background-color: #d8a81b !important;
+
+}
+
+span.insta {
+  color :rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #ff208c !important;
+
+}
+
+span.insta:active {
+  background-color: #ce1b71 !important;
+
+}
+
+span.edition {
+  color :rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #0FDBCA !important;
+ 
+}
+
+span.edition:active {
+  background-color: #0cb6a8 !important;
+
+}
+
+span.video {
+  color :rgb(255, 255, 255);
+  text-decoration: none;
+  background-color: #9DCC4E !important;
+ 
+}
+
+span.video:active {
+  background-color: #7ea33f !important;
+
+}
+
+.img-left {
+
+  float : left;
+}
+
+.img-right {
+
+  float : right;
+  margin-right: 3rem;
+  margin-top: -2rem;
+}
+
+.intro-footer {
+
+  color: #000;
+  font-weight: 400;
+  font-family: 'Roboto condensed';
+  font-size: 0.8rem; 
+  padding: 1.5rem;
+  text-align: justify;
+
+}
+
+.intro-footer a {
+
+  color: #000;
+  text-decoration: none;
+
+}
+
+.intro-footer a:hover {
+
+  color: #000;
+  text-decoration: none;
+  padding:3px 14px 3px 14px;
+  background-color : #cccccc;
+  border-radius: 3rem;
+  color : white !important;
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 1px 0 0 #000, 0 1px 0 #000, -1px 0 0 #000, 0 -1px 0 #000;
+  transition: 0.5s;
+}
+
+
+.intro-footer a:visited {
+
+  color: #000;
+}
+
+/* ------- HEADER ---------- */
 
 .header-container {
   padding-left: 1rem;
@@ -308,7 +492,7 @@ transition: 0.2s;
   font-family: 'Roboto condensed';
   color: #FFFFFF;
   text-align: center;
-  font-size: 1rem;
+  font-size: 0.8rem;
   text-decoration: none;
   padding-left: 20px;
   padding-right: 20px;
@@ -319,22 +503,72 @@ transition: 0.2s;
   /* margin: 5px; */
 }
 
+.bouton-info:hover {
+  filter: brightness(150%);
+}
+
+.bouton-info:active {
+  transform: translateY(4px);
+  filter: brightness(80%);
+  transition: 0.2s;
+}
+
+
+
+
 .bouton-post {
   background-color: #FF6E6E;
 }
+
+/* */
 
 .bouton-prev {
   background-color: #6e8bff;
 }
 
-.bouton-post span {
+
+.bouton-prev span {
   cursor: pointer;
   display: inline-block;
   position: relative;
   transition: 0.5s;
 }
 
-.bouton-post span:after {
+.bouton-prev span:after {
+  content: '\00ab';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  left: -20px;
+  transition: 0.5s;
+}
+
+.bouton-prev:hover span {
+  padding-left: 25px;
+}
+
+
+.bouton-prev:hover span:after {
+  opacity: 1;
+  left: 0;
+}
+
+/* */
+
+.bouton-next {
+  background-color: #6e8bff;
+  
+}
+
+
+.bouton-next span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.bouton-next span:after {
   content: '\00bb';
   position: absolute;
   opacity: 0;
@@ -343,13 +577,19 @@ transition: 0.2s;
   transition: 0.5s;
 }
 
-.bouton-post:hover span {
-  padding-right: 25px;
+
+
+@media screen and (width > 600px) {
+  .bouton-next:hover span {
+    padding-right: 25px;
+  }
 }
 
-.bouton-post:hover span:after {
-  opacity: 1;
-  right: 0;
+@media screen and (width > 600px) {
+  .bouton-next:hover span:after {
+    opacity: 1;
+    right: 0;
+  }
 }
 
 /* Catégories */

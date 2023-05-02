@@ -55,7 +55,7 @@
       </div>
       <div class="row">
         <button id="btn-home" class="btn-round"><img width="20px" height="20px" data-bs-toggle="modal"
-            data-bs-target="#about" src="/icons-bootstrap/info-circle-fill.svg"></button>
+            data-bs-target="#about" src="/images/icon-info.svg"></button>
       </div>
       <div class="row">
         <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/images/icon-house.svg"></button>
@@ -67,13 +67,28 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h1 class="modal-title fs-5" id="aboutTitle">
-              Modal title
+            <h1 class="modal-title fs-5 titre-intro" id="aboutTitle">
+              Trois mois, deux saisons . . . qu'est ce que c'est ? 
             </h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">...</div>
-          <div class="modal-footer">
+          <div class="modal-body card-intro"><img class="img-left" src="/images/intro-ecrit.webp" alt="Renard dessinant le carnet de voyage Trois mois deux saisons" width="130" height="99" /><p>Fin 2022, je publie chaque jour sur<span class="link insta"><a href="https://www.instagram.com/_morganehamon_/" target="_blank">Instagram</a></span>, mon carnet de voyage illustré «Trois mois, deux saisons» racontant ma vie quotidienne au Japon.</p>
+
+            <p>Pour continuer l'aventure, j'inaugure en Mai 2023 cette carte interactive qui ancre dans l'espace et le temps, ces 89 jours de balades, de rencontres, d'émotions et d'appétissants repas bien entendu.</p>
+
+            <p><span class="link video"><a href="https://www.instagram.com/p/CqJQzEnjo5F/" target="_blank">Le carnet</a></span>, lui, est dans sa forme la plus brute : 52 feuillets écrits et dessinés entièrement à la main, une couverture cabossée au fil des jours, quelques coins écornés.</p>
+            <p class="align-left">Aujourd’hui, pour lui donner sa forme finale et lui permettre à son tour de faire son chemin, je pars à la<span class="link edition"><a href="https://morganehamon.fr/trois-mois-deux-saisons/" target="_blank">recherche d'une maison d’édition</a>.</span></p>
+
+            <p>Vous pouvez soutenir le projet en le partageant, ou en faisant un don sur mon compte<span class="link"><a href="https://ko-fi.com/morganehamon" target="_blank">Kofi !</a></span></p>
+
+              Bon voyage !
+            </p>
+
+            <p><img class="img-right" src="/images/intro-balade.webp" alt="Renard dessinant le carnet de voyage Trois mois deux saisons" width="90" height="94" /><span class="link signature">Morgane</span></p>
+</div>
+          <div class="modal-footer intro-footer">
+           
+            
             <p>
               © <span><a href="https://morganehamon.fr/" target="_blank" class="link-primary">Morgane Hamon</a></span>,
               <span><a href="https://github.com/sguimmara" target="_blank" class="link-primary">Sébastien
@@ -97,11 +112,8 @@
           </div>
           <div class="modal-body card-bienvenue">
             <p class="titre-bienvenue"><span>Trois mois, deux saisons</p>
-            <p><img vertical-align="middle" class="fit-picture"
-              src="/thumbnails/jour-80.webp"
-              alt="Renard tenant la carte de trois mois, deux saisons."
-              width="150" height="150">
-              <p>Accompagnez-moi au Japon au fil des jours en cliquant sur une icône de<span data-bs-dismiss="modal" class="carte">la carte</span> ou en débutant par le<span id="start-d1" class="start">jour 1</span></p>
+            <p><img vertical-align="middle" class="fit-picture" src="/thumbnails/jour-80.webp" alt="Renard tenant la carte de trois mois, deux saisons." width="150" height="150" style="margin-bottom:10px">
+              <p class="text-bienvenue">Accompagnez-moi au Japon au fil des jours en cliquant sur une icône de<span data-bs-dismiss="modal" class="carte">la carte</span> ou en débutant par le<span id="start-d1" class="start">jour 1</span></p>
             </p>
           </div>
         </div>
@@ -145,7 +157,7 @@
             </a>
           </div>
           <div class="col">
-            <button id="next-feature" class="bouton-info bouton-prev">
+            <button id="next-feature" class="bouton-info bouton-next">
               <span>Suivant</span>
             </button>
           </div>
