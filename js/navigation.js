@@ -18,14 +18,16 @@ let blockHideCard = false;
 
 const duration = 500;
 const center = fromLonLat([139.340, 38.822]);
-const minZoom = 5.5;
 
 /**
  * @param {Map} map
  */
 function zoomIn(map) {
     const view = map.getView();
-    view.animate({ zoom: view.getZoom() + 1, duration });
+    view.getMaxZoom()
+    if (view.getZoom() < view.getMaxZoom()) {
+        view.animate({ zoom: view.getZoom() + 1, duration });
+    }
 }
 
 /**
@@ -33,7 +35,9 @@ function zoomIn(map) {
  */
 function zoomOut(map) {
     const view = map.getView();
-    view.animate({ zoom: view.getZoom() - 1, duration });
+    if (view.getZoom() > view.getMinZoom()) {
+        view.animate({ zoom: view.getZoom() - 1, duration });
+    }
 }
 
 /**
@@ -41,7 +45,7 @@ function zoomOut(map) {
  */
 function resetView(map) {
     const view = map.getView();
-    view.animate({ zoom: minZoom, center, duration });
+    view.animate({ zoom: view.getMinZoom(), center, duration });
 }
 
 /**

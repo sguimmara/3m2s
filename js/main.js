@@ -13,6 +13,8 @@ import { goTo, initNavigation } from './navigation';
 /** @type {Feature} */
 let orderedFeatures;
 
+const startDay1Btn = document.getElementById('start-d1');
+
 const map = new Map({
     layers: loadBasemaps(),
     target: 'map',
@@ -22,6 +24,7 @@ const map = new Map({
         center: fromLonLat([139.340, 38.822]),
         zoom: 5.5,
         minZoom: 5.5,
+        maxZoom: 16,
         enableRotation: false,
     }),
 });
@@ -36,6 +39,10 @@ loadFeatures('/data/features.geojson').then(layer => {
     featureLayer = layer;
     orderedFeatures = layer.getSource().getFeatures();
     orderedFeatures.sort((a, b) => a.get('day') - b.get('day'));
+
+    startDay1Btn.onclick = function () {
+        selectFeature(orderedFeatures[0]);
+    }
 
     initSearch(orderedFeatures);
 
