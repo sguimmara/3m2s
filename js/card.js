@@ -58,8 +58,10 @@ function showCard({
     descriptionElement.innerText = description;
     closeButton.onclick = function () { hideCard(); };
 
+    previousBtn.disabled = onPrevious === undefined;
     previousBtn.onclick = onPrevious;
     nextBtn.onclick = onNext;
+    nextBtn.disabled = onNext === undefined;
 
     thumbnailElt.src = thumbnailUrl;
 

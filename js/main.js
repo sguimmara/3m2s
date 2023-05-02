@@ -1,7 +1,7 @@
 import Map from 'ol/Map.js';
 import View from 'ol/View.js';
+import Feature from 'ol/Feature';
 import { fromLonLat } from 'ol/proj';
-
 import VectorLayer from 'ol/layer/Vector';
 
 import { hideCard, showCard } from './card';
@@ -10,11 +10,11 @@ import { highlight, select } from './states';
 import { initSearch, setFeaturedCategories } from './search';
 import { goTo, initNavigation } from './navigation';
 
-const baseLayers = loadBasemaps();
+/** @type {Feature} */
 let orderedFeatures;
 
 const map = new Map({
-    layers: baseLayers,
+    layers: loadBasemaps(),
     target: 'map',
     controls: [],
     view: new View({
@@ -39,13 +39,13 @@ loadFeatures('/data/features.geojson').then(layer => {
 
     initSearch(orderedFeatures);
 
-    setFeaturedCategories(['nourriture', 'voyage', 'quotidien','culture', 'sortie','balade','anecdote']);
+    setFeaturedCategories(['nourriture', 'voyage', 'quotidien', 'culture', 'sortie', 'balade', 'anecdote']);
 
     initNavigation(map);
 });
 
 map.on('pointermove', (evt) => {
-    if  (!featureLayer) {
+    if (!featureLayer) {
         return;
     }
     highlight(orderedFeatures, false);
@@ -70,8 +70,8 @@ function selectFeature(feature) {
     const previous = index > 0 ? orderedFeatures[index - 1] : undefined;
     const next = index < orderedFeatures.length - 1 ? orderedFeatures[index + 1] : undefined;
 
-    const onNext = function() { selectFeature(next) };
-    const onPrevious = function() { selectFeature(previous) };
+    const onNext = next ? function () { selectFeature(next) } : undefined;
+    const onPrevious = previous ? function () { selectFeature(previous) } : undefined;
 
     showCard({
         title: `jour ${feature.get('day')}`,
@@ -86,7 +86,7 @@ function selectFeature(feature) {
 }
 
 map.on('click', (evt) => {
-    if  (!featureLayer) {
+    if (!featureLayer) {
         return;
     }
 
