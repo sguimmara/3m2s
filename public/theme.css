@@ -272,7 +272,7 @@ span.video:active {
 .intro-footer a {
 
   color: #000;
-  text-decoration: none;
+  text-decoration:underline;
 
 }
 
