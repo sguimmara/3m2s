@@ -58,11 +58,15 @@ function initNavigation(map) {
     btnZoomIn.onclick = () => zoomIn(map);
     btnZoomOut.onclick = () => zoomOut(map);
     btnHome.onclick = () => resetView(map);
-    view.on('change', () => {
-        if (!blockHideCard) {
-            hideCard();
-        }
-    });
+    // view.on('change', () => {
+    //     if (!blockHideCard) {
+    //         hideCard();
+    //     }
+    // });
+}
+
+function isMoving() {
+    return blockHideCard;
 }
 
 /**
@@ -75,13 +79,14 @@ function goTo(feature) {
 
     view.animate({
         center: feature.getGeometry().getFirstCoordinate(),
-        duration: 1000,
-        easing: easeOut,
+        // duration: 1000,
+        // easing: easeOut,
         zoom: currentZoom < 10 ? 10 : undefined,
     }, () => blockHideCard = false);
 }
 
 export {
+    isMoving,
     initNavigation,
     goTo,
 }
