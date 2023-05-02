@@ -17,7 +17,7 @@
   font-weight: 400;
   font-family: 'Roboto condensed';
   font-size: 1.2rem;
-  text-align: center; 
+  text-align: center;
 
 }
 
@@ -63,7 +63,7 @@ p.texte-bienvenue {
   font-weight: 400;
   font-family: 'Roboto condensed';
   font-size: 1.2rem;
-  text-align: left; 
+  text-align: left;
 }
 
 span.start {
@@ -96,7 +96,7 @@ span.start:active {
   transition: 0.2s;
   font-size: 1.1rem;
 
-  
+
 }
 
 span.carte {
@@ -129,7 +129,7 @@ span.carte:active {
   transition: 0.2s;
   font-size: 1.1rem;
 
-  
+
 }
 
 /* ------- POP UP PRÉSENTATION ---------- */
@@ -139,10 +139,10 @@ span.carte:active {
   color: #000;
   font-weight: 400;
   font-family: 'Roboto condensed';
-  font-size: 1rem; 
+  font-size: 1rem;
   padding: 1.5rem;
   text-align: justify;
-  
+
 
 }
 
@@ -186,14 +186,14 @@ span.link:active {
   transition: 0.2s;
   font-size: 0.8rem;
 
-  
+
 }
 
 span.link a {
   color :rgb(255, 255, 255);
   text-decoration: none;
 
-  
+
 }
 
 span.signature {
@@ -202,7 +202,7 @@ span.signature {
   background-color: #ffc720 !important;
   margin-left: 35%;
   text-align: center !important;
-  
+
 }
 
 span.signature:active {
@@ -226,7 +226,7 @@ span.edition {
   color :rgb(255, 255, 255);
   text-decoration: none;
   background-color: #0FDBCA !important;
- 
+
 }
 
 span.edition:active {
@@ -238,7 +238,7 @@ span.video {
   color :rgb(255, 255, 255);
   text-decoration: none;
   background-color: #9DCC4E !important;
- 
+
 }
 
 span.video:active {
@@ -263,7 +263,7 @@ span.video:active {
   color: #000;
   font-weight: 400;
   font-family: 'Roboto condensed';
-  font-size: 0.8rem; 
+  font-size: 0.8rem;
   padding: 1.5rem;
   text-align: justify;
 
@@ -341,8 +341,8 @@ span.video:active {
   background-color: #FFFFFF;
   border-radius: 100%;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
-  width: 40pt !important;
-  height: 40pt !important;
+  width: 30pt !important;
+  height: 30pt !important;
   transition: all 0.75s 0.1s;
 }
 
@@ -360,14 +360,25 @@ transition: 0.2s;
   transition: 0.2s;
 }
 
-@media screen and (width <= 600px) {
-  .card-container {
-    width: 100%;
-    height: 100% !important;
-  }
+.info {
+  display: none;
+  background-color: white;
+  padding: 1rem;
+  height: 100%;
+  border-radius: 1rem;
+  pointer-events: auto;
+  border: 0;
+
+  animation: fadein 0.6s;
+  -moz-animation: fadein 0.6s;
+  /* Firefox */
+  -webkit-animation: fadein 0.6s;
+  /* Safari et Chrome */
+  -o-animation: fadein 0.6s;
+  /* Opera */
 }
 
-@media screen and (width > 600px) {
+@media only screen and (min-width: 500px) {
   .card-container {
     width: 30rem;
     max-width: 100%;
@@ -376,6 +387,27 @@ transition: 0.2s;
     bottom: 0;
     left: 50% !important;
     transform: translateX(-50%) !important;
+  }
+
+  .info {
+    box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
+  }
+}
+
+@media (max-width: 500px) {
+  .card-container {
+    width: 100%;
+    padding-left: 2pt;
+    padding-right: 2pt;
+    top: 50%;
+  }
+
+  #btn-close {
+    display: none;
+  }
+
+  .info {
+    box-shadow: 0px -4px 3px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -388,23 +420,7 @@ transition: 0.2s;
   border-radius: 10pt;
 }
 
-.info {
-  display: none;
-  background-color: white;
-  padding: 1rem;
-  height: 100%;
-  border-radius: 1rem;
-  pointer-events: auto;
-  border: 0;
-  box-shadow: 6px 6px 0px rgba(0, 0, 0, 0.3);
-  animation: fadein 0.6s;
-  -moz-animation: fadein 0.6s;
-  /* Firefox */
-  -webkit-animation: fadein 0.6s;
-  /* Safari et Chrome */
-  -o-animation: fadein 0.6s;
-  /* Opera */
-}
+
 
 @keyframes fadein {
   from {
@@ -414,12 +430,10 @@ transition: 0.2s;
 
   to {
     opacity: 1;
-
   }
 }
 
 @-moz-keyframes fadein {
-
   /* sur Firefox */
   from {
     opacity: 0;
@@ -432,7 +446,6 @@ transition: 0.2s;
 }
 
 @-webkit-keyframes fadein {
-
   /* sur Safari et Chrome */
   from {
     opacity: 0;
@@ -445,7 +458,6 @@ transition: 0.2s;
 }
 
 @-o-keyframes fadein {
-
   /* sur Opera */
   from {
     opacity: 0;
@@ -494,9 +506,11 @@ transition: 0.2s;
   text-align: center;
   font-size: 0.8rem;
   text-decoration: none;
-  padding-left: 20px;
-  padding-right: 20px;
-  height: 40px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-bottom: 0.2rem;
+  padding-top: 0.2rem;
+  /* height: 20px; */
   transition: all 0.5s;
   cursor: pointer;
   width: 100%;
@@ -531,7 +545,7 @@ button:disabled {
   color :rgba(255, 255, 255, 0.404);
   padding-left: Opx;
   pointer-events: none;
-  
+
 }
 
 
@@ -567,7 +581,7 @@ button:disabled {
 
 .bouton-next {
   background-color: #6e8bff;
-  
+
 }
 
 
@@ -614,12 +628,6 @@ button:disabled {
   margin-left: 1rem;
   padding-top: 5pt;
   padding-bottom: 5pt;
-}
-
-@media screen and (max-width: 600px) {
-  #optional-buttons {
-    visibility: hidden;
-  }
 }
 
 .reset-button {
