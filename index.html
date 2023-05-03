@@ -48,25 +48,15 @@
 
     <!-- Boutons de navigation -->
     <div class="position-absolute bottom-0 end-0 btn-nav">
-      <div id="optional-buttons">
-        <div class="row">
-          <button id="btn-zoom-in" class="btn-round"><img width="15px" height="15px"
-              src="/images/icon-plus.svg"></button>
-        </div>
-        <div class="row">
-          <button id="btn-zoom-out" class="btn-round"><img width="15px" height="15px"
-              src="/images/icon-moins.svg"></button>
-        </div>
-      </div>
+
       <div class="row">
-        <button class="btn-round"><img width="15px" height="15px" data-bs-toggle="modal"
+        <button class="btn-round"><img width="20px" height="20px" data-bs-toggle="modal"
             data-bs-target="#about" src="/images/icon-info.svg"></button>
       </div>
       <div class="row">
         <button id="btn-home" class="btn-round"><img width="20px" height="20px" src="/images/icon-house.svg"></button>
       </div>
     </div>
-
     <!-- A propos -->
     <div class="modal fade" id="about" tabindex="-1" aria-labelledby="aboutTitle" aria-hidden="true">
       <div class="modal-dialog">
@@ -117,11 +107,13 @@
           </div>
           <div class="modal-body card-bienvenue">
             <p class="titre-bienvenue"><span>Trois mois, deux saisons</span></p><p class="soustitre-bienvenue">La carte interactive</p>
-           <img vertical-align="middle" class="fit-picture" src="/thumbnails/jour-80.webp" alt="Renard tenant la carte de trois mois, deux saisons." width="150" height="150"  />
+           <img vertical-align="middle" class="fit-picture" src="/images/renard-marche.gif" alt="Renard tenant la carte de trois mois, deux saisons." width="150" height="150" style="margin-top: 15px;"  />
               <p class="texte-bienvenue">Accompagnez-moi au Japon au fil des pages en choisissant votre mode de navigation grâce à ces boutons:</p>
-                  <p class="left"><span data-bs-dismiss="modal" class="chronologique" >Navigation chronologique</span></p>
-                  <p class="right"><span id="start-d1" data-bs-dismiss="modal" class="libre">Navigation libre</span></p>
-              <p class="texte-bienvenue">Vous pouvez changer de mode en cliquant à tout moment sur les boutons à gauche de votre écran.</p>
+              <div class="bouton-bienvenue">
+                  <p class="left"><span data-bs-dismiss="modal" class="chronologique" ><img src="images/icon-chrono.svg" width="15" height="15" style="margin-right: 5px; margin-bottom:2px;" />Navigation chronologique</span></p>
+                  <p class="right"><span id="start-d1" data-bs-dismiss="modal" class="libre"><img src="images/icon-libre.svg" width="15" height="15" style="margin-right: 5px;" />Navigation libre</span></p>
+              </div>
+                  <p class="texte-bienvenue">Vous pouvez changer de mode en cliquant à tout moment sur les boutons à gauche de votre écran.</p>
             </p>
           </div>
         </div>
@@ -132,6 +124,7 @@
     <div class="position-absolute card-container" style="pointer-events: none">
       <div id="card" class="info">
         <button id="btn-close" class="position-absolute end-0 top-0 m-3 btn-close"></button>
+        <div class="barre"></div>
         <h5>
           <span id="day" class="feature-day">Jour 1</span>
           <span id="date" class="feature-date">Jour 1</span>
