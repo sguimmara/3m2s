@@ -2,6 +2,7 @@ import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
 import { Feature } from "ol";
 import _ from "lodash";
+import { Fill, Stroke, Text } from "ol/style";
 
 const size = { width: 29, height: 40 };
 
@@ -25,6 +26,19 @@ function normal(src) {
 function selected(src) {
     return new Style({
         image: icon(src, 1.3),
+        text: new Text({
+            offsetX: 50,
+            offsetY: -20,
+            text: 'jour XX',
+            fill: new Fill({
+                color: 'black',
+            }),
+            stroke: new Stroke({
+                color: 'white',
+                width: 5,
+            }),
+            font: '20px Roboto Condensed',
+        }),
         zIndex: 10,
     });
 }
