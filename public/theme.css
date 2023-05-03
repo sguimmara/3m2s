@@ -425,6 +425,12 @@ span.video:active {
   height: 6em;
 }
 
+.image-day {
+  width: auto;
+  height: auto;
+  padding-bottom: 0.6rem;
+}
+
 .btn-nav {
   /* padding-right: 1rem;
   padding-bottom: 1rem; */
@@ -461,8 +467,9 @@ transition: 0.2s;
 .info {
   display: none;
   background-color: white;
-  padding: 1rem;
-  height: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  /* height: 100%; */
   border-radius: 1rem;
   pointer-events: auto;
   border: 0;
@@ -480,7 +487,6 @@ transition: 0.2s;
   .card-container {
     width: 30rem;
     max-width: 100%;
-    max-height: 40%;
     margin-bottom: 4rem;
     bottom: 0;
     left: 50% !important;
@@ -495,9 +501,16 @@ transition: 0.2s;
 @media (max-width: 500px) {
   .card-container {
     width: 100%;
-    padding-left: 2pt;
-    padding-right: 2pt;
-    top: 50%;
+    padding-top: 0 !important;
+    overflow: scroll;
+  }
+
+  .minimize {
+    animation: minimize 0.5s ease-in-out 0s 1 normal forwards;
+  }
+
+  .maximize {
+    animation: maximize 0.5s ease-in-out 0s 1 normal forwards;
   }
 
   #btn-close {
@@ -518,7 +531,25 @@ transition: 0.2s;
   border-radius: 10pt;
 }
 
+@keyframes maximize {
+  from {
+    top: 60%;
+  }
 
+  to {
+    top: 0%;
+  }
+}
+
+@keyframes minimize {
+  from {
+    top: 0%;
+  }
+
+  to {
+    top: 60%;
+  }
+}
 
 @keyframes fadein {
   from {
@@ -578,13 +609,18 @@ transition: 0.2s;
 
 @media screen and (width <= 600px) {
   .barre {
-
     width: 3.5em;
-    border-top: 3px solid #dedbdb;
-    border-radius: 5rem;
+    /* border-top: 3px solid #dedbdb; */
+    background-color: #dedbdb;
+    height: 0.2rem;
+    /* border-radius: 5rem; */
+    border-style: none;
     margin-left: 45%;
-    margin-top: -5px;
-    margin-bottom : 5px;
+    margin-right: 45%;
+    margin-top: 0;
+    padding: 0;
+    /* margin-top: -5px; */
+    /* margin-bottom : 5px; */
   }
 }
 

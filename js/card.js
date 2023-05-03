@@ -1,4 +1,5 @@
 const cardElement = document.getElementById('card');
+const cardContainer = document.getElementById('card-container');
 const dayElement = document.getElementById('day');
 const dateElement = document.getElementById('date');
 const linkElement = document.getElementById('card-link');
@@ -8,6 +9,7 @@ const tagContainer = document.getElementById('feature-tags');
 const thumbnailElt = document.getElementById('thumbnail');
 const descriptionElement = document.getElementById('feature-description');
 const closeButton = document.getElementById('btn-close');
+const maximizeBtn = document.getElementById('btn-maximize');
 
 import { getFeaturedCategories, setActiveCategory } from "./search";
 
@@ -42,6 +44,19 @@ function tag(name) {
     return elt;
 }
 
+let fullScreen = false;
+
+function toggleFullScreen() {
+    fullScreen = !fullScreen;
+    if (fullScreen) {
+        cardContainer.classList.remove('minimize');
+        cardContainer.classList.add('maximize');
+    } else {
+        cardContainer.classList.remove('maximize');
+        cardContainer.classList.add('minimize');
+    }
+}
+
 function showCard({
     title,
     date,
@@ -57,6 +72,7 @@ function showCard({
     dateElement.innerText = formatDate(date);
     descriptionElement.innerText = description;
     closeButton.onclick = function () { hideCard(); };
+    maximizeBtn.onclick = function() { toggleFullScreen(); }
 
     previousBtn.disabled = onPrevious === undefined;
     previousBtn.onclick = onPrevious;
