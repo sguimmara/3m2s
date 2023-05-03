@@ -629,9 +629,7 @@ transition: 0.2s;
   /* margin: 5px; */
 }
 
-.bouton-info:hover {
-  filter: brightness(150%);
-}
+
 
 .bouton-info:active {
   transform: translateY(4px);
@@ -640,6 +638,17 @@ transition: 0.2s;
 }
 
 
+@media screen and (width <= 600px) {
+  .bouton-info:hover {
+    filter: brightness(100%);
+  }
+}
+
+@media screen and (width > 600px) {
+  .bouton-info:hover {
+    filter: brightness(150%);
+  }
+}
 
 
 .bouton-post {
@@ -715,18 +724,19 @@ button:disabled {
 
 
 
-@media screen and (width > 600px) {
   .bouton-next:hover span {
     padding-right: 25px;
   }
-}
 
-@media screen and (width > 600px) {
+
+
   .bouton-next:hover span:after {
     opacity: 1;
     right: 0;
   }
-}
+
+
+
 
 /* Catégories */
 
@@ -757,6 +767,8 @@ button:disabled {
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.3);
 
 }
+
+
 
 .reset-button:hover {
   filter: brightness(150%);
