@@ -2,7 +2,7 @@ import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
 import _ from "lodash";
 import { Fill, Stroke, Text } from "ol/style";
-import Feature from "ol/Feature";
+import { FeatureLike } from "ol/Feature";
 import { getStates } from "./states";
 
 const size = { width: 29, height: 40 };
@@ -82,7 +82,7 @@ const styles = {
     'hover-voyage': hover('/images/pin-hover-voyage.png'),
 }
 
-function getStyle(feature: Feature, activeCategories: Set<string>) {
+function getStyle(feature: FeatureLike, activeCategories: Set<string>) {
     const states = getStates(feature);
 
     if (states.has('hidden')) {
