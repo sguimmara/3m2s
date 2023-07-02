@@ -1,43 +1,50 @@
-const cardElement = document.getElementById('card');
-const cardContainer = document.getElementById('card-container');
-const dayElement = document.getElementById('day');
-const dateElement = document.getElementById('date');
-const linkElement = document.getElementById('card-link');
-const previousBtn = document.getElementById('previous-feature');
-const nextBtn = document.getElementById('next-feature');
-const tagContainer = document.getElementById('feature-tags');
-const thumbnailElt = document.getElementById('thumbnail');
-const descriptionElement = document.getElementById('feature-description');
-const closeButton = document.getElementById('btn-close');
-const maximizeBtn = document.getElementById('btn-maximize');
+const cardElement = findElement<HTMLDivElement>('card');
+const cardContainer = findElement<HTMLDivElement>('card-container');
+const dayElement = findElement<HTMLSpanElement>('day');
+const dateElement = findElement<HTMLSpanElement>('date');
+const linkElement = findElement<HTMLAnchorElement>('card-link');
+const previousBtn = findElement<HTMLButtonElement>('previous-feature');
+const nextBtn = findElement<HTMLButtonElement>('next-feature');
+const tagContainer = findElement<HTMLDivElement>('feature-tags');
+const thumbnailElt = findElement<HTMLImageElement>('thumbnail');
+const descriptionElement = findElement<HTMLParagraphElement>('feature-description');
+const closeButton = findElement<HTMLButtonElement>('btn-close');
+const maximizeBtn = findElement<HTMLButtonElement>('btn-maximize');
+
+function findElement<T extends HTMLElement>(id: string): T {
+    const result = document.getElementById(id) as T;
+    if (!result) {
+        throw new Error(`cannot find element ${id}`);
+    }
+    return result;
+}
 
 import { getFeaturedCategories, setActiveCategory } from "./search";
 
-/**
- * @param {Date} date
- */
-function formatDate(str) {
+function formatDate(str: string | number | Date) {
     const date = new Date(str);
     const day = date.getDate();
     const month = date.getMonth();
     const year = date.getFullYear();
 
-    let monthString;
+    let monthString: string;
     switch (month) {
         // Months are 0-indexed
         case 8: monthString = 'septembre'; break;
         case 9: monthString = 'octobre'; break;
         case 10: monthString = 'novembre'; break;
         case 11: monthString = 'décembre'; break;
+        default: throw new Error('invalid month');
     }
 
     return `${day} ${monthString} ${year}`;
 }
 
-function tag(name) {
+function tag(name: string) {
     // <button class="category nourriture">nourriture</button>
     const elt = document.createElement('button');
-    elt.classList = 'toggle category ' + name;
+    elt.className = "";
+    elt.classList.add('toggle', 'category', name);
     elt.innerText = name;
     elt.onclick = function () { setActiveCategory(name); }
 
@@ -72,7 +79,7 @@ function showCard({
     dateElement.innerText = formatDate(date);
     descriptionElement.innerText = description;
     closeButton.onclick = function () { hideCard(); };
-    maximizeBtn.onclick = function() { toggleFullScreen(); }
+    maximizeBtn.onclick = function () { toggleFullScreen(); }
 
     previousBtn.disabled = onPrevious === undefined;
     previousBtn.onclick = onPrevious;
@@ -86,7 +93,7 @@ function showCard({
     for (const child of [...tagContainer.childNodes]) {
         child.remove();
     }
-    tags.forEach(t => {
+    tags.forEach((t: any) => {
         if (featuredCategories.includes(t)) {
             tagContainer.appendChild(tag(t))
         }

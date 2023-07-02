@@ -2,29 +2,20 @@ import { Feature } from "ol";
 import { hide, toggleCategory } from "./states";
 import _ from "lodash";
 
-const activeCategories = new Set();
+const activeCategories = new Set<string>();
 const categoryToggles = new Map();
-let featuredCategories = [];
+let featuredCategories: string[] = [];
 
-/**
- * @type {HTMLInputElement}
- */
-const searchBar = document.getElementById('search-bar');
+const searchBar: HTMLInputElement = document.getElementById('search-bar') as HTMLInputElement;
 
-/**
- * @type {Array<Feature>}
- */
-let searchedFeatures;
+let searchedFeatures: Array<Feature>;
 
-/**
- * @type {string}
- */
-let searchQuery = '';
+let searchQuery: string = '';
 
-let searchKeywords = [];
+let searchKeywords: string[] = [];
 
-function toggleFilterCategory(category) {
-    let result;
+function toggleFilterCategory(category: string) {
+    let result: boolean;
     if (activeCategories.has(category)) {
         activeCategories.delete(category);
         result = false;
@@ -38,9 +29,12 @@ function toggleFilterCategory(category) {
     return result
 }
 
-function setFeaturedCategories(categories) {
+function setFeaturedCategories(categories: string[]) {
     const listElement = document.getElementById('search-category-list');
     const resetButton = document.getElementById('reset-categories');
+    if (!listElement || !resetButton) {
+        throw new Error('cannot find elements');
+    }
     featuredCategories = categories;
     resetButton.onclick = function () {
         activeCategories.clear();
@@ -68,7 +62,8 @@ function setFeaturedCategories(categories) {
         // <button class="categorie café">café</button>
         const elt = document.createElement('button');
         categoryToggles.set(cat, elt);
-        elt.classList = 'toggle category ' + cat;
+        elt.className = "";
+        elt.classList.add('toggle', 'category', cat);
         elt.innerText = cat;
         elt.onclick = function () {
             const active = toggleFilterCategory(cat);
@@ -87,15 +82,9 @@ function getFeaturedCategories() {
     return featuredCategories;
 }
 
-/**
- *
- * @param {Feature} feature
- * @param {Array<string>} keywords
- * @returns {boolean}
- */
-function matchesKeywords(feature, keywords) {
+function matchesKeywords(feature: Feature, keywords: Array<string>): boolean {
     const tags = feature.get('categories');
-    if (tags.some(t => keywords.some(kw => t.toLowerCase().includes(kw)))) {
+    if (tags.some((t: string) => keywords.some(kw => t.toLowerCase().includes(kw)))) {
         return true;
     }
 
@@ -105,7 +94,7 @@ function matchesKeywords(feature, keywords) {
     }
 
     /** @type {string} */
-    const description = feature.get('description');
+    const description: string = feature.get('description');
 
     if (keywords.some(kw => description.includes(kw))) {
         return true;
@@ -114,10 +103,7 @@ function matchesKeywords(feature, keywords) {
     return false;
 }
 
-/**
- * @param {Array<Feature>} features
- */
-function initSearch(features) {
+function initSearch(features: Array<Feature>) {
     searchBar.oninput = function () {
         setSearchQuery(searchBar.value);
     }
@@ -125,10 +111,7 @@ function initSearch(features) {
     searchedFeatures = features;
 }
 
-/**
- * @param {string} query
- */
-function setSearchQuery(query) {
+function setSearchQuery(query: string) {
     searchQuery = query;
 
     searchKeywords = searchQuery
@@ -156,10 +139,7 @@ function updateFeatures() {
     }
 }
 
-/**
- * @returns {Array<Feature>}
- */
-function getFilteredFeatureFromCategories() {
+function getFilteredFeatureFromCategories(): Array<Feature> {
     if (activeCategories.size === 0) {
         return [...searchedFeatures];
     }
@@ -167,7 +147,7 @@ function getFilteredFeatureFromCategories() {
     /**
      * @param {Feature} feature
      */
-    function matchesCategories(feature) {
+    function matchesCategories(feature: Feature) {
         const featureCategories = feature.get('categories');
         for (const cat of featureCategories) {
             if (activeCategories.has(cat)) {
@@ -181,10 +161,7 @@ function getFilteredFeatureFromCategories() {
     return searchedFeatures.filter(f => matchesCategories(f));
 }
 
-/**
- * @returns {Array<Feature>}
- */
-function getFilteredFeatureFromKeywords() {
+function getFilteredFeatureFromKeywords(): Array<Feature> {
     if (searchKeywords.length === 0) {
         return [...searchedFeatures];
     } else {
@@ -192,10 +169,7 @@ function getFilteredFeatureFromKeywords() {
     }
 }
 
-/**
- * @param {string} keyword
- */
-function addKeyword(keyword) {
+function addKeyword(keyword: string) {
     if (keyword) {
         if (searchKeywords.includes(keyword.trim())) {
             return;
@@ -206,7 +180,7 @@ function addKeyword(keyword) {
     }
 }
 
-function setActiveCategory(category) {
+function setActiveCategory(category: string) {
     [...categoryToggles.values()].forEach(elt => elt.classList.remove('category-active'));
 
     activeCategories.clear();

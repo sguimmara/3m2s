@@ -1,12 +1,13 @@
 import Icon from "ol/style/Icon";
 import Style from "ol/style/Style";
-import { Feature } from "ol";
 import _ from "lodash";
 import { Fill, Stroke, Text } from "ol/style";
+import Feature from "ol/Feature";
+import { getStates } from "./states";
 
 const size = { width: 29, height: 40 };
 
-function icon(src, factor = 1) {
+function icon(src: any, factor = 1) {
     return new Icon({
         anchor: [0.5, 1],
         height: size.height * factor,
@@ -17,13 +18,13 @@ function icon(src, factor = 1) {
     });
 }
 
-function normal(src) {
+function normal(src: string) {
     return new Style({
         image: icon(src),
     });
 }
 
-function selected(src) {
+function selected(src: string) {
     return new Style({
         image: icon(src, 1.3),
         text: new Text({
@@ -43,7 +44,7 @@ function selected(src) {
     });
 }
 
-function hover(src) {
+function hover(src: string) {
     return new Style({
         image: icon(src),
         zIndex: 5,
@@ -56,7 +57,7 @@ const styles = {
     // Default styles
     'default': normal('/images/pin.png'),
     'hover': hover('/images/pin-hover.png'),
-    'selected':  selected('/images/pin-selected.png'),
+    'selected': selected('/images/pin-selected.png'),
 
     // Category-specific styles
     'anecdote': normal('/images/pin-anecdote.png'),
@@ -74,9 +75,6 @@ const styles = {
     'quotidien': normal('/images/pin-quotidien.png'),
     'hover-quotidien': hover('/images/pin-hover-quotidien.png'),
 
-    'balade': normal('/images/pin-balade.png'),
-    'hover-balade': hover('/images/pin-hover-balade.png'),
-
     'sortie': normal('/images/pin-sortie.png'),
     'hover-sortie': hover('/images/pin-hover-sortie.png'),
 
@@ -84,12 +82,8 @@ const styles = {
     'hover-voyage': hover('/images/pin-hover-voyage.png'),
 }
 
-/**
- * @param {Feature} states
- * @param {Array<string>} activeCategories
- */
-function getStyle(feature, activeCategories) {
-    const states = feature.get('state');
+function getStyle(feature: Feature, activeCategories: Set<string>) {
+    const states = getStates(feature);
 
     if (states.has('hidden')) {
         return styles['hidden'];
